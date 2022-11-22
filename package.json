@@ -1,0 +1,20 @@
+{
+    "private": true,
+    "scripts": {
+        "dev:styles": "npx tailwindcss -i resources/css/plugin.css -o resources/dist/filament-title-status-column.css --postcss --watch",
+        "build:styles": "npx tailwindcss -i resources/css/plugin.css -o resources/dist/filament-title-status-column.css --postcss --minify && npm run purge",
+        "purge": "filament-purge -i resources/dist/filament-title-status-column.css -o resources/dist/filament-title-status-column.css",
+        "dev": "npm-run-all --parallel dev:*",
+        "build": "npm-run-all build:*"
+    },
+    "devDependencies": {
+        "@awcodes/filament-plugin-purge": "^1.0.2",
+        "autoprefixer": "^10.4.7",
+        "esbuild": "^0.8.57",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.14",
+        "prettier": "^2.7.1",
+        "prettier-plugin-tailwindcss": "^0.1.13",
+        "tailwindcss": "^3.2"
+    }
+}
