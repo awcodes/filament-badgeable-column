@@ -1,8 +1,9 @@
 # Filament Badgeable Column 
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/filament-title-status-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-title-status-column)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/awcodes/filament-title-status-column/Check%20&%20fix%20styling?label=code%20style)](https://github.com/awcodes/filament-title-status-column/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/filament-title-status-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-title-status-column)
+[![Latest Version on Packagist](https://img.shields.
+io/packagist/v/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/awcodes/filament-badgeable-column/Check%20&%20fix%20styling?label=code%20style)](https://github.com/awcodes/filament-badgeable-column/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
 
 With Filament Badgeable Column you append badges to your columns.
 
