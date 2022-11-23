@@ -1,9 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "dev:styles": "npx tailwindcss -i resources/css/plugin.css -o resources/dist/filament-title-status-column.css --postcss --watch",
-        "build:styles": "npx tailwindcss -i resources/css/plugin.css -o resources/dist/filament-title-status-column.css --postcss --minify && npm run purge",
-        "purge": "filament-purge -i resources/dist/filament-title-status-column.css -o resources/dist/filament-title-status-column.css",
+        "dev:styles": "npx tailwindcss -i resources/css/plugin.css -o resources/dist/filament-badgeable-column.css --postcss --watch",
+        "build:styles": "npx tailwindcss -i resources/css/plugin.css -o resources/dist/filament-badgeable-column.css --postcss --minify && npm run purge",
+        "purge": "filament-purge -i resources/dist/filament-badgeable-column.css -o resources/dist/filament-badgeable-column.css",
         "dev": "npm-run-all --parallel dev:*",
         "build": "npm-run-all build:*"
     },

@@ -22,6 +22,20 @@ trait HasColor
 
     public function hasHexColor(): bool
     {
-        return $this->color && Str::of($this->color)->startsWith('#');
+        return $this->getColor() && Str::of($this->getColor())->startsWith('#');
+    }
+
+    public function invertTextColor(): bool
+    {
+        if ($this->hasHexColor()) {
+            $hex = str_replace('#', '', $this->getColor());
+            $c_r = hexdec(substr($hex, 0, 2));
+            $c_g = hexdec(substr($hex, 2, 2));
+            $c_b = hexdec(substr($hex, 4, 2));
+
+            return ((($c_r * 299) + ($c_g * 587) + ($c_b * 114)) / 1000) > 150;
+        }
+
+        return false;
     }
 }

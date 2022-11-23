@@ -3,19 +3,17 @@
 @endphp
 
 @if (! $isHidden())
-<div class="filament-badgeable-column-badge inline-flex gap-1">
-    <span class="opacity-50">&mdash;</span>
-    <strong
-        @class([
-            'filament-badgeable-column-badge px-2 rounded py-1 text-xs',
-            'text-primary-700 bg-primary-500/10 dark:text-primary-500' => $color === 'primary',
-            'text-secondary-700 bg-secondary-500/10 dark:text-secondary-500' => $color === 'secondary',
-            'text-success-700 bg-success-500/10 dark:text-success-500' => $color === 'success',
-            'text-warning-700 bg-warning-500/10 dark:text-warning-500' => $color === 'warning',
-            'text-danger-700 bg-danger-500/10 dark:text-danger-500' => $color === 'danger',
-            'text-gray-700 bg-gray-500/10 dark:text-gray-300 dark:bg-gray-500/20' => $color === 'default',
-        ])
-        {!! $hasHexColor() ? "style=\"background-color:" . $color . ";\"" : null !!}
-    >{{ $getLabel() }}</strong>
-</div>
+<span
+    @class([
+        'filament-badgeable-badge px-2 inline-flex rounded py-1 text-xs font-medium',
+        'text-primary-800 bg-primary-500/20 dark:text-primary-400' => $color === 'primary',
+        'text-secondary-800 bg-secondary-500/20 dark:text-secondary-400' => $color === 'secondary',
+        'text-success-800 bg-success-500/20 dark:text-success-400' => $color === 'success',
+        'text-warning-800 bg-warning-500/20 dark:text-warning-400' => $color === 'warning',
+        'text-danger-800 bg-danger-500/20 dark:text-danger-400' => $color === 'danger',
+        'text-gray-800 bg-gray-500/20 dark:text-gray-300' => $color === 'default' || $color === 'gray',
+        'text-gray-800' => $invertTextColor(),
+    ])
+    {!! $hasHexColor() ? "style=\"background-color:" . $color . ";\"" : null !!}
+>{{ $getLabel() }}</span>
 @endif

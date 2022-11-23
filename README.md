@@ -1,51 +1,73 @@
-# Filament Tables coloumn with record status indicator 
+# Filament Badgeable Column 
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/filament-title-status-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-title-status-column)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/awcodes/filament-title-status-column/run-tests?label=tests)](https://github.com/awcodes/filament-title-status-column/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/awcodes/filament-title-status-column/Check%20&%20fix%20styling?label=code%20style)](https://github.com/awcodes/filament-title-status-column/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/filament-title-status-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-title-status-column)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+With Filament Badgeable Column you append badges to your columns.
+
+![Light View](./images/light.png)
+
+![Dark View](./images/dark.png)
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require awcodes/filament-title-status-column
+composer require awcodes/filament-badgeable-column
 ```
 
-You can publish and run the migrations with:
+Optionally, you can publish the views, translations and assets using
 
 ```bash
-php artisan vendor:publish --tag="filament-title-status-column-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="filament-title-status-column-config"
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="filament-title-status-column-views"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
+php artisan vendor:publish --tag="filament-badgeable-column-views"
+php artisan vendor:publish --tag="filament-badgeable-column-translations"
+php artisan vendor:publish --tag="filament-badgeable-column-assets"
 ```
 
 ## Usage
 
+`BadgeableColumn` extends Filament's own `TextColumn` so it supports all 
+methods used by `TextColumn`.
+
 ```php
-$filament-title-status-column = new Awcodes\TitleStatusColumn();
-echo $filament-title-status-column->echoPhrase('Hello, Awcodes!');
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeField;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+
+return $table
+    ->columns([
+        BadgeableColumn::make('title')
+            ->badges([
+                Badge::make('front_page')
+                    ->label('Front Page')
+                    ->color('success')
+                    ->visible(fn ($record): bool => $record->front_page),
+                Badge::make('front_page_custom_color')
+                    ->label('#bada55')
+                    ->color('#bada55')
+                    ->visible(fn ($record): bool => $record->front_page),
+                Badge::make('trashed')
+                    ->label('Trashed')
+                    ->color('danger')
+                    ->visible(fn ($record): bool => $record->deleted_at ?? false),
+                BadgeField::make('status')
+                    ->options([
+                        'Draft' => 'Draft',
+                        'Review' => 'In Review',
+                        'Published' => 'Published'
+                    ])
+                    ->colors([
+                        'gray' => 'Draft',
+                        'warning' => 'Review',
+                        'success' => 'Published',
+                    ])
+                    ->visible(fn ($record): bool => $record->status !== Status::Published->name)
+            ])
+            ->searchable()
+            ->sortable(),
+    ]);
 ```
 
 ## Testing
