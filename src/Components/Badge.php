@@ -4,7 +4,6 @@ namespace Awcodes\FilamentBadgeableColumn\Components;
 
 use Awcodes\FilamentBadgeableColumn\Components\Concerns\CanBePill;
 use Awcodes\FilamentBadgeableColumn\Components\Concerns\HasColor;
-use Closure;
 use Filament\Support\Components\ViewComponent;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Concerns\CanBeHidden;

@@ -26,7 +26,7 @@ class BadgeField extends ViewComponent
 
     protected Column $column;
 
-    protected array | Closure $colors = [];
+    protected array|Closure $colors = [];
 
     final public function __construct(string $name)
     {
@@ -45,7 +45,7 @@ class BadgeField extends ViewComponent
         return $this;
     }
 
-    public function colors(array | Closure $colors): static
+    public function colors(array|Closure $colors): static
     {
         $this->colors = $colors;
 

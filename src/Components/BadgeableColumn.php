@@ -9,11 +9,11 @@ class BadgeableColumn extends TextColumn
 {
     protected string $view = 'filament-badgeable-column::components.badgeable-column';
 
-    protected array | Closure | null $badges;
+    protected array|Closure|null $badges;
 
-    protected bool | Closure | null $asPills = true;
+    protected bool|Closure|null $asPills = true;
 
-    public function badges(array | Closure | null $badges): static
+    public function badges(array|Closure|null $badges): static
     {
         foreach ($badges as $badge) {
             $badge->column($this);
@@ -29,7 +29,7 @@ class BadgeableColumn extends TextColumn
         return $this->badges;
     }
 
-    public function asPills(bool | Closure | null $condition): static
+    public function asPills(bool|Closure|null $condition): static
     {
         $this->asPills = $condition;
 

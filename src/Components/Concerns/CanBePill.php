@@ -9,9 +9,9 @@ trait CanBePill
 {
     use EvaluatesClosures;
 
-    protected bool | Closure | null $shouldBePill = true;
+    protected bool|Closure|null $shouldBePill = true;
 
-    public function isPill(bool | Closure | null $condition): static
+    public function isPill(bool|Closure|null $condition): static
     {
         $this->shouldBePill = $condition;
 
