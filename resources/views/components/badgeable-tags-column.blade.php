@@ -4,29 +4,14 @@
     $descriptionAbove = $getDescriptionAbove();
     $descriptionBelow = $getDescriptionBelow();
 
-    $icon = $getIcon();
-    $iconPosition = $getIconPosition();
-    $iconClasses = 'w-4 h-4';
-
-    $isCopyable = $isCopyable();
-
     $badges = $getBadges();
-    $hasBadges = collect($badges)->filter(fn ($badge) => ! $badge->isHidden())->count() > 0;
 @endphp
 
 <div
     {{ $attributes->merge($getExtraAttributes())->class([
-        'filament-tables-text-column',
+        'filament-tables-text-column filament-badgeable-tags-column',
         'px-4 py-3' => ! $isInline(),
         'text-primary-600 transition hover:underline hover:text-primary-500 focus:underline focus:text-primary-500' => $getAction() || $getUrl(),
-        match ($getColor()) {
-            'danger' => 'text-danger-600',
-            'primary' => 'text-primary-600',
-            'secondary' => 'text-gray-500',
-            'success' => 'text-success-600',
-            'warning' => 'text-warning-600',
-            default => null,
-        } => ! ($getAction() || $getUrl()),
         match ($getColor()) {
             'secondary' => 'dark:text-gray-400',
             default => null,
@@ -63,36 +48,10 @@
     @endif
 
     <div class="inline-flex items-center space-x-1 rtl:space-x-reverse">
-        @if ($icon && $iconPosition === 'before')
-            <x-dynamic-component :component="$icon" :class="$iconClasses" />
-        @endif
-
-        <span
-            @if ($isCopyable)
-                x-on:click="
-                    window.navigator.clipboard.writeText(@js($state))
-                    $tooltip(@js($getCopyMessage()), { timeout: @js($getCopyMessageDuration()) })
-                "
-            @endif
-            @class([
-                'cursor-pointer' => $isCopyable,
-            ])
-        >
-            @if (filled($state))
-                <div>
-                    {{ $state }}
-                    @if ($hasBadges)
-                        <span class="opacity-50">&mdash;</span>
-                        @foreach ($badges as $badge)
-                            {{ $badge }}
-                        @endforeach
-                    @endif
-                </div>
-            @endif
-        </span>
-
-        @if ($icon && $iconPosition === 'after')
-            <x-dynamic-component :component="$icon" :class="$iconClasses" />
+        @if (filled($badges))
+            @foreach ($badges as $badge)
+                {{ $badge }}
+            @endforeach
         @endif
     </div>
 
@@ -102,4 +61,3 @@
         </div>
     @endif
 </div>
-

@@ -9,6 +9,8 @@ With Filament Badgeable Column you append badges to your columns.
 
 ![Dark View](./images/dark.png)
 
+![With Tags View](./images/with-tags.png)
+
 ## Installation
 
 You can install the package via composer:
@@ -27,8 +29,7 @@ php artisan vendor:publish --tag="filament-badgeable-column-assets"
 
 ## Usage
 
-`BadgeableColumn` extends Filament's own `TextColumn` so it supports all 
-methods used by `TextColumn`.
+### BadgeableColumn
 
 ```php
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
@@ -67,6 +68,43 @@ return $table
             ->searchable()
             ->sortable(),
     ]);
+```
+
+### Badgeable Tags Column
+
+This is similar to the `Badgeable Column` except it allows you to use an 
+array of data to simply output badges in the column. You field must return 
+an array from the record.
+
+```php
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableTagsColumn;
+
+BadgeableTagsColumn::make('tags')
+    ->colors([
+        'gray',
+        'primary' => 'Dan',
+        '#bada55' => 'Zep',
+        'warning' => 'Dennis',
+        '#0e7490' => 'Ryan',
+    ]),
+```
+
+## Badge Shape
+
+If you prefer to have a more "square" shape you can use the `asPills()` 
+method to set the shape of the badges. The default is that each badge 
+will be a pill shape.
+
+```php
+BadgeableTagsColumn::make('tags')
+    ->asPills(false)
+    ->colors([
+        'gray',
+        'primary' => 'Dan',
+        '#bada55' => 'Zep',
+        'warning' => 'Dennis',
+        '#0e7490' => 'Ryan',
+    ]),
 ```
 
 ## Testing
