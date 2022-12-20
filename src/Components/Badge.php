@@ -2,7 +2,9 @@
 
 namespace Awcodes\FilamentBadgeableColumn\Components;
 
+use Awcodes\FilamentBadgeableColumn\Components\Concerns\CanBePill;
 use Awcodes\FilamentBadgeableColumn\Components\Concerns\HasColor;
+use Closure;
 use Filament\Support\Components\ViewComponent;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Concerns\CanBeHidden;
@@ -18,6 +20,7 @@ class Badge extends ViewComponent
     use HasName;
     use HasRecord;
     use CanBeHidden;
+    use CanBePill;
 
     protected string $view = 'filament-badgeable-column::components.badge';
 
@@ -30,9 +33,7 @@ class Badge extends ViewComponent
 
     public static function make(string $name): static
     {
-        $static = app(static::class, ['name' => $name]);
-
-        return $static;
+        return app(static::class, ['name' => $name]);
     }
 
     public function column(Column $column): static
