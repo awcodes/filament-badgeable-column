@@ -2,6 +2,14 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.1.2 - 2023-02-02
+
+### What's Changed
+
+- Patch: remove duplicates in getBadges by @awcodes in https://github.com/awcodes/filament-badgeable-column/pull/8
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.1.1...v1.1.2
+
 ## v1.1.1 - 2023-02-02
 
 ### What's Changed
