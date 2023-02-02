@@ -15,18 +15,23 @@ class BadgeableColumn extends TextColumn
 
     public function badges(array | Closure | null $badges): static
     {
-        foreach ($badges as $badge) {
-            $badge->column($this);
-            $badge->isPill($this->shouldBePills());
-            $this->badges[$badge->getName()] = $badge;
-        }
+        $this->badges = $badges;
 
         return $this;
     }
 
     public function getBadges(): array
     {
-        return $this->badges;
+        // only evaluate the badges at the point of retrieval, to ensure the rest of the livewire component stack + needed data is available.
+        $badges = $this->evaluate($this->badges);
+
+        foreach ($this->badges as $badge) {
+            $badge->column($this);
+            $badge->isPill($this->shouldBePills());
+            $badges[$badge->getName()] = $badge;
+        }
+
+        return $badges;
     }
 
     public function asPills(bool | Closure | null $condition): static
