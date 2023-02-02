@@ -25,9 +25,10 @@ class BadgeableColumn extends TextColumn
         // only evaluate the badges at the point of retrieval, to ensure the rest of the livewire component stack + needed data is available.
         $badges = $this->evaluate($this->badges);
 
-        foreach ($this->badges as $badge) {
+        foreach ($this->badges as $k => $badge) {
             $badge->column($this);
             $badge->isPill($this->shouldBePills());
+            unset($badges[$k]);
             $badges[$badge->getName()] = $badge;
         }
 
