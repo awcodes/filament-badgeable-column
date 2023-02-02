@@ -1,4 +1,4 @@
-# Filament Badgeable Column 
+# Filament Badgeable Column
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
@@ -70,10 +70,34 @@ return $table
     ]);
 ```
 
+You can also define the array of badges via a closure, if you want the array of badges to be based on dynamic data. The
+closure should return an array of `Badge` or `BadgeField` objects, similar to above.
+
+The example below assumes the records have a `BelongsToMany` relationship called `topics`, and shows how to display each
+topic name as a badge.
+
+```php
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeField;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+
+return $table
+    ->columns([
+        BadgeableColumn::make('title')
+            ->badges(function($record) {
+                  return $record->topics->map(function($topic) {
+                    return Badge::make($topic->name)->color($topic->color)
+                  });
+            })
+            ->searchable()
+            ->sortable(),
+    ]);
+```
+
 ### Badgeable Tags Column
 
-This is similar to the `Badgeable Column` except it allows you to use an 
-array of data to simply output badges in the column. You field must return 
+This is similar to the `Badgeable Column` except it allows you to use an
+array of data to simply output badges in the column. You field must return
 an array from the record.
 
 ```php
@@ -91,8 +115,8 @@ BadgeableTagsColumn::make('tags')
 
 ## Badge Shape
 
-If you prefer to have a more "square" shape you can use the `asPills()` 
-method to set the shape of the badges. The default is that each badge 
+If you prefer to have a more "square" shape you can use the `asPills()`
+method to set the shape of the badges. The default is that each badge
 will be a pill shape.
 
 ```php

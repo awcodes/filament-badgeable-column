@@ -22,7 +22,7 @@ class BadgeableColumn extends TextColumn
 
     public function getBadges(): array
     {
-        // only evaluate the badges here, to ensure the rest of the livewire component stack + needed data is available.
+        // only evaluate the badges at the point of retrieval, to ensure the rest of the livewire component stack + needed data is available.
         $badges = $this->evaluate($this->badges);
 
         foreach ($this->badges as $badge) {

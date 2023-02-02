@@ -42,17 +42,21 @@ class BadgeableTagsColumn extends Column
 
     public function badges(array | Closure | null $badges): static
     {
-        foreach ($badges as $badge) {
-            $badge->column($this);
-            $this->badges[$badge->getName()] = $badge;
-        }
+        $this->badges = $badges;
 
         return $this;
     }
 
     public function getBadges(): array
     {
-        return $this->badges;
+        $badges = $this->evaluate($this->badges);
+
+        foreach ($badges as $badge) {
+            $badge->column($this);
+            $badges[$badge->getName()] = $badge;
+        }
+
+        return $badges;
     }
 
     public function getColors(): array
