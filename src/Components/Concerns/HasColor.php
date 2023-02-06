@@ -8,6 +8,8 @@ trait HasColor
 {
     protected string $color = 'default';
 
+    protected string|null $textColor = null;
+
     public function color(string $color): static
     {
         $this->color = $color;
@@ -15,9 +17,21 @@ trait HasColor
         return $this;
     }
 
+    public function textColor(string $color): static
+    {
+        $this->textColor = $color;
+
+        return $this;
+    }
+
     public function getColor(): string
     {
         return $this->color;
+    }
+
+    public function getTextColor(): string|null
+    {
+        return $this->textColor;
     }
 
     public function hasHexColor(): bool
