@@ -2,6 +2,14 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.1.3 - 2023-02-06
+
+### What's Changed
+
+- Feat: add support for custom text color by @awcodes in https://github.com/awcodes/filament-badgeable-column/pull/9
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.1.2...v1.1.3
+
 ## v1.1.2 - 2023-02-02
 
 ### What's Changed
