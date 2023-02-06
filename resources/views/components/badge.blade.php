@@ -13,10 +13,10 @@
         'text-warning-800 bg-warning-500/20 dark:text-warning-400' => $color === 'warning',
         'text-danger-800 bg-danger-500/20 dark:text-danger-400' => $color === 'danger',
         'text-gray-800 bg-gray-500/20 dark:text-gray-300' => $color === 'default' || $color === 'gray',
-        'text-gray-800' => $invertTextColor(),
+        'text-gray-800' => $invertTextColor() && ! $getTextColor(),
         'rounded py-1' => ! $isPill,
         'rounded-full py-0.5' => $isPill,
     ])
-    {!! $hasHexColor() ? "style=\"background-color:" . $color . ";\"" : null !!}
+    {!! $hasHexColor() ? "style=\"background-color:" . $color . "; color:" . $getTextColor() . " !important;\"" : null !!}
 >{{ $getLabel() }}</span>
 @endif

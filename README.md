@@ -45,7 +45,7 @@ return $table
                     ->color('success')
                     ->visible(fn ($record): bool => $record->front_page),
                 Badge::make('front_page_custom_color')
-                    ->label('#bada55')
+                    ->label('Badass')
                     ->color('#bada55')
                     ->visible(fn ($record): bool => $record->front_page),
                 Badge::make('trashed')
@@ -129,6 +129,18 @@ BadgeableTagsColumn::make('tags')
         'warning' => 'Dennis',
         '#0e7490' => 'Ryan',
     ]),
+```
+
+## Badge Text Color
+
+You may customize the color of the label for a badge with the `textColor` 
+method. ***This only works with custom colors***.
+
+```php
+Badge::make('front_page_custom_color')
+    ->label('Badass')
+    ->color('#bada55')
+    ->textColor('#ff0000')
 ```
 
 ## Testing
