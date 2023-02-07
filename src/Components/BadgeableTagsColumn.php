@@ -51,8 +51,9 @@ class BadgeableTagsColumn extends Column
     {
         $badges = $this->evaluate($this->badges);
 
-        foreach ($badges as $badge) {
+        foreach ($badges as $k => $badge) {
             $badge->column($this);
+            unset($badges[$k]);
             $badges[$badge->getName()] = $badge;
         }
 
