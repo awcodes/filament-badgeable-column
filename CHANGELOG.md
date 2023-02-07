@@ -2,6 +2,14 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.1.4 - 2023-02-07
+
+### What's Changed
+
+- Fix: duplicated tags in TagsColumn by @awcodes in https://github.com/awcodes/filament-badgeable-column/pull/10
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.1.3...v1.1.4
+
 ## v1.1.3 - 2023-02-06
 
 ### What's Changed
