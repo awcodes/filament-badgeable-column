@@ -31,6 +31,8 @@ class BadgeableTagsColumn extends Column
 
     protected bool | Closure | null $asPills = true;
 
+    protected int | null $wrapEvery = null;
+
     protected Column $column;
 
     public function colors(array | Closure $colors): static
@@ -43,6 +45,13 @@ class BadgeableTagsColumn extends Column
     public function badges(array | Closure | null $badges): static
     {
         $this->badges = $badges;
+
+        return $this;
+    }
+
+    public function wrapEvery(int|null $index): static
+    {
+        $this->wrapEvery = $index;
 
         return $this;
     }
@@ -88,6 +97,7 @@ class BadgeableTagsColumn extends Column
         return $this;
     }
 
+
     public function canWrap(): bool
     {
         return $this->evaluate($this->canWrap);
@@ -100,7 +110,7 @@ class BadgeableTagsColumn extends Column
 
     public function getColor(string $option = null): ?string
     {
-        $optionColor = null;
+        $optionColor = 'default';
 
         foreach ($this->getColors() as $color => $condition) {
             if (is_numeric($color)) {
@@ -113,6 +123,11 @@ class BadgeableTagsColumn extends Column
         }
 
         return $optionColor;
+    }
+
+    public function getWrapEvery(): ?int
+    {
+        return $this->wrapEvery;
     }
 
     protected function mutateArrayState(array $state): array

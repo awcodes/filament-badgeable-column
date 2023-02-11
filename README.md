@@ -113,6 +113,17 @@ BadgeableTagsColumn::make('tags')
     ]),
 ```
 
+## Wrapping
+
+If you need to wrap the badges to keep your columns from getting too wide you can use the `wrapEvery()` method to tell the column where to break.
+
+```php
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableTagsColumn;
+
+BadgeableTagsColumn::make('tags')
+    ->wrapEvery(3)
+```
+
 ## Badge Shape
 
 If you prefer to have a more "square" shape you can use the `asPills()`
@@ -120,6 +131,8 @@ method to set the shape of the badges. The default is that each badge
 will be a pill shape.
 
 ```php
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableTagsColumn;
+
 BadgeableTagsColumn::make('tags')
     ->asPills(false)
     ->colors([
