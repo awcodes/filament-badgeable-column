@@ -47,10 +47,11 @@
         </div>
     @endif
 
-    <div class="inline-flex items-center space-x-1 rtl:space-x-reverse">
+    <div class="space-x-1 rtl:space-x-reverse">
         @if (filled($badges))
             @foreach ($badges as $badge)
                 {{ $badge }}
+                @if ($getWrapEvery() && ($loop->index + 1) % $getWrapEvery() === 0)<div class="w-full mt-1"></div>@endif
             @endforeach
         @endif
     </div>
