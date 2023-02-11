@@ -2,6 +2,14 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.1.5 - 2023-02-11
+
+### What's Changed
+
+- Feat: wrap badges every n badges by @awcodes in https://github.com/awcodes/filament-badgeable-column/pull/11
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.1.4...v1.1.5
+
 ## v1.1.4 - 2023-02-07
 
 ### What's Changed
