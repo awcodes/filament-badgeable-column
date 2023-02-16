@@ -2,6 +2,18 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.2.0 - 2023-02-16
+
+### What's Changed
+
+- Laravel 10 compatibility by @howdu in https://github.com/awcodes/filament-badgeable-column/pull/12
+
+### New Contributors
+
+- @howdu made their first contribution in https://github.com/awcodes/filament-badgeable-column/pull/12
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.1.5...v1.2.0
+
 ## v1.1.5 - 2023-02-11
 
 ### What's Changed
