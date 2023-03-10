@@ -27,7 +27,7 @@ class BadgeableTagsColumn extends Column
 
     protected bool | Closure $canWrap = false;
 
-    protected array | Closure | null $badges;
+    protected array | Closure | null $badges = null;
 
     protected bool | Closure | null $asPills = true;
 
@@ -60,13 +60,15 @@ class BadgeableTagsColumn extends Column
     {
         $badges = $this->evaluate($this->badges);
 
-        foreach ($badges as $k => $badge) {
-            $badge->column($this);
-            unset($badges[$k]);
-            $badges[$badge->getName()] = $badge;
+        if ($badges) {
+            foreach ($badges as $k => $badge) {
+                $badge->column($this);
+                unset($badges[$k]);
+                $badges[$badge->getName()] = $badge;
+            }
         }
 
-        return $badges;
+        return $badges ?? [];
     }
 
     public function getColors(): array
