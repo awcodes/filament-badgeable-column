@@ -2,6 +2,20 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.2.1 - 2023-03-10
+
+### What's Changed
+
+- Fix ISSUE_TEMPLATE config.yml links by @ziming in https://github.com/awcodes/filament-badgeable-column/pull/15
+- Chore(deps): bump actions/checkout from 2 to 3 by @dependabot in https://github.com/awcodes/filament-badgeable-column/pull/13
+- Fix: bug with null state by @awcodes in https://github.com/awcodes/filament-badgeable-column/pull/16
+
+### New Contributors
+
+- @ziming made their first contribution in https://github.com/awcodes/filament-badgeable-column/pull/15
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.2.0...v1.2.1
+
 ## v1.2.0 - 2023-02-16
 
 ### What's Changed
