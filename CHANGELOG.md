@@ -2,6 +2,14 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.2.2 - 2023-04-24
+
+### What's Changed
+
+- Feat: support closures in color() and textColor() by @awcodes in https://github.com/awcodes/filament-badgeable-column/pull/18
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.2.1...v1.2.2
+
 ## v1.2.1 - 2023-03-10
 
 ### What's Changed
