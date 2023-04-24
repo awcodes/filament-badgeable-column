@@ -2,22 +2,23 @@
 
 namespace Awcodes\FilamentBadgeableColumn\Components\Concerns;
 
+use Closure;
 use Illuminate\Support\Str;
 
 trait HasColor
 {
-    protected string $color = 'default';
+    protected string|Closure $color = 'default';
 
-    protected string|null $textColor = null;
+    protected string|Closure|null $textColor = null;
 
-    public function color(string $color): static
+    public function color(string|Closure $color): static
     {
         $this->color = $color;
 
         return $this;
     }
 
-    public function textColor(string $color): static
+    public function textColor(string|Closure|null $color = null): static
     {
         $this->textColor = $color;
 
@@ -26,12 +27,12 @@ trait HasColor
 
     public function getColor(): string
     {
-        return $this->color;
+        return $this->evaluate($this->color);
     }
 
     public function getTextColor(): string|null
     {
-        return $this->textColor;
+        return $this->evaluate($this->textColor);
     }
 
     public function hasHexColor(): bool
