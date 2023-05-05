@@ -2,6 +2,14 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.2.3 - 2023-05-05
+
+### What's Changed
+
+- Lighten cell description in dark mode by @howdu in https://github.com/awcodes/filament-badgeable-column/pull/20
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.2.2...v1.2.3
+
 ## v1.2.2 - 2023-04-24
 
 ### What's Changed
