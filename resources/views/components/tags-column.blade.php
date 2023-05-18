@@ -1,10 +1,10 @@
 @php
-    $state = $getFormattedState();
+    $state = $getState();
 
     $descriptionAbove = $getDescriptionAbove();
     $descriptionBelow = $getDescriptionBelow();
 
-    $badges = $getBadges();
+    $badges = $formatState($state);
 @endphp
 
 <div
@@ -12,16 +12,16 @@
         'filament-tables-text-column filament-badgeable-tags-column',
         'px-4 py-3' => ! $isInline(),
         'text-primary-600 transition hover:underline hover:text-primary-500 focus:underline focus:text-primary-500' => $getAction() || $getUrl(),
-        match ($getColor()) {
+        match ($getColor($state)) {
             'secondary' => 'dark:text-gray-400',
             default => null,
         } => (! ($getAction() || $getUrl())) && config('tables.dark_mode'),
-        match ($getSize()) {
+        match ($getSize($state)) {
             'sm' => 'text-sm',
             'lg' => 'text-lg',
             default => null,
         },
-        match ($getWeight()) {
+        match ($getWeight($state)) {
             'thin' => 'font-thin',
             'extralight' => 'font-extralight',
             'light' => 'font-light',
@@ -32,7 +32,7 @@
             'black' => 'font-black',
             default => null,
         },
-        match ($getFontFamily()) {
+        match ($getFontFamily($state)) {
             'sans' => 'font-sans',
             'serif' => 'font-serif',
             'mono' => 'font-mono',

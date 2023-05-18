@@ -1,9 +1,9 @@
 <?php
 
-namespace Awcodes\FilamentBadgeableColumn\Components;
+namespace Awcodes\Badger\Components;
 
-use Awcodes\FilamentBadgeableColumn\Components\Concerns\CanBePill;
-use Awcodes\FilamentBadgeableColumn\Components\Concerns\HasColor;
+use Awcodes\Badger\Components\Concerns\CanBePill;
+use Awcodes\Badger\Components\Concerns\HasColors;
 use Closure;
 use Filament\Support\Components\ViewComponent;
 use Filament\Tables\Columns\Column;
@@ -15,14 +15,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class BadgeField extends ViewComponent
 {
-    use HasColor;
+    use HasColors;
     use HasName;
     use HasRecord;
     use CanBeHidden;
     use HasOptions;
     use CanBePill;
 
-    protected string $view = 'filament-badgeable-column::components.badge';
+    protected string $view = 'badger::components.badge';
 
     protected Column $column;
 

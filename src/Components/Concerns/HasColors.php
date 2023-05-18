@@ -1,13 +1,14 @@
 <?php
 
-namespace Awcodes\FilamentBadgeableColumn\Components\Concerns;
+namespace Awcodes\Badger\Components\Concerns;
 
 use Closure;
 use Illuminate\Support\Str;
+use Spatie\Color\Hex;
 
-trait HasColor
+trait HasColors
 {
-    protected string|Closure $color = 'default';
+    protected string|Closure|null $color = null;
 
     protected string|Closure|null $textColor = null;
 
@@ -18,19 +19,19 @@ trait HasColor
         return $this;
     }
 
-    public function textColor(string|Closure|null $color = null): static
+    public function textColor(string|Closure $color): static
     {
         $this->textColor = $color;
 
         return $this;
     }
 
-    public function getColor(): string
+    public function getColor(): ?string
     {
         return $this->evaluate($this->color);
     }
 
-    public function getTextColor(): string|null
+    public function getTextColor(): ?string
     {
         return $this->evaluate($this->textColor);
     }
@@ -38,6 +39,16 @@ trait HasColor
     public function hasHexColor(): bool
     {
         return $this->getColor() && Str::of($this->getColor())->startsWith('#');
+    }
+
+    public function getHexColor(): ?string
+    {
+        if ($this->hasHexColor()) {
+            $hex = Hex::fromString($this->getColor())->toRgb();
+            return implode(',', [$hex->red(), $hex->green(), $hex->blue()]);
+        }
+
+        return null;
     }
 
     public function invertTextColor(): bool
