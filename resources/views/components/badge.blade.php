@@ -2,7 +2,6 @@
 <span
     @class([
         'badger-badge px-2 inline-flex py-0.5',
-        'text-gray-800' => $invertTextColor() && ! $getTextColor(),
         match ($isPill = $shouldBePill(null)) {
             true => 'rounded-full',
             default => 'rounded',
@@ -27,14 +26,14 @@
             'warning' => 'text-warning-600',
             default => null,
         },
-        match ($size = $getSize(null) ?? 'xs') {
+        match ($getSize(null) ?? 'xs') {
             'xs' => 'text-xs',
             'sm', null => 'text-sm',
             'base', 'md' => 'text-base',
             'lg' => 'text-lg',
             default => null,
         },
-        match ($weight = $getWeight(null) ?? 'medium') {
+        match ($getWeight(null) ?? 'medium') {
             'thin' => 'font-thin',
             'extralight' => 'font-extralight',
             'light' => 'font-light',
@@ -51,7 +50,8 @@
             'mono' => 'font-mono',
             default => null,
         },
+        'text-gray-800' => $invertTextColor() && ! $textColor,
     ])
-    {!! $getHexColor() ? "style=\"background-color:rgba(" . $getHexColor() . ", 0.6); color:" . $textColor . " !important;\"" : null !!}
+    {!! $getCustomColor() ? "style=\"background-color:rgb(" . $getCustomColor() . ", 0.6); color:" . $textColor . " !important;\"" : null !!}
 >{{ $getLabel() }}</span>
 @endif

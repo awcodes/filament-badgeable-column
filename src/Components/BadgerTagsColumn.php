@@ -15,7 +15,6 @@ use Filament\Tables\Columns\Concerns\HasWeight;
 class BadgerTagsColumn extends Column
 {
     use CanFormatState;
-    use CanBePills;
     use HasColor;
     use HasDescription;
     use HasFontFamily;

@@ -41,11 +41,14 @@ trait HasColors
         return $this->getColor() && Str::of($this->getColor())->startsWith('#');
     }
 
-    public function getHexColor(): ?string
+    public function getCustomColor(): ?string
     {
-        if ($this->hasHexColor()) {
-            $hex = Hex::fromString($this->getColor())->toRgb();
+        $color = $this->getColor();
+        if ($color && Str::of($color)->startsWith('#')) {
+            $hex = Hex::fromString($color)->toRgb();
             return implode(',', [$hex->red(), $hex->green(), $hex->blue()]);
+        } else if ($color && Str::of($color)->contains(',')) {
+            return $this->getColor();
         }
 
         return null;
