@@ -17,7 +17,7 @@
         },
         'text-gray-700' => $invertTextColor() && $getTextColor(),
         'rounded py-1' => ! $isPill,
-        'rounded-full py-0.5' => $isPill
+        'rounded-full py-0.5' => $isPill,
     ])
     {!! $hasHexColor() ? "style=\"background-color:" . $color . "; color:" . $getTextColor() . " !important;\"" : null !!}
 >{{ $getLabel() }}</span>
