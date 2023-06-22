@@ -2,6 +2,20 @@
 
 All notable changes to `filament-title-status-column` will be documented in this file.
 
+## v1.2.4 - 2023-06-22
+
+### What's Changed
+
+- Chore(deps): bump aglipanci/laravel-pint-action from 2.2.0 to 2.3.0 by @dependabot in https://github.com/awcodes/filament-badgeable-column/pull/22
+- Update badge colors by @ThijmenKort in https://github.com/awcodes/filament-badgeable-column/pull/23
+- Chore: dedupe getTextColor by @awcodes in https://github.com/awcodes/filament-badgeable-column/pull/24
+
+### New Contributors
+
+- @ThijmenKort made their first contribution in https://github.com/awcodes/filament-badgeable-column/pull/23
+
+**Full Changelog**: https://github.com/awcodes/filament-badgeable-column/compare/v1.2.3...v1.2.4
+
 ## v1.2.3 - 2023-05-05
 
 ### What's Changed
