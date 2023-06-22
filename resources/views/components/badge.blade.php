@@ -13,7 +13,7 @@
             'success' => 'text-success-700 bg-success-500/10 dark:text-success-500',
             'warning' => 'text-warning-700 bg-warning-500/10 dark:text-warning-500',
             'danger' => 'text-danger-700 bg-danger-500/10 dark:text-danger-500',
-            'default', 'gray' => 'text-gray-700 bg-gray-500/10 dark:text-gray-500',
+            default => 'text-gray-700 bg-gray-500/10 dark:text-gray-500',
         },
         'text-gray-700' => $invertTextColor() && $getTextColor(),
         'rounded py-1' => ! $isPill,
