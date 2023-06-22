@@ -1,6 +1,7 @@
 @php
     $color = $getColor();
     $isPill = $shouldBePill();
+    $textColor = $getTextColor();
 @endphp
 
 @if (! $isHidden())
@@ -15,10 +16,10 @@
             'danger' => 'text-danger-700 bg-danger-500/10 dark:text-danger-500',
             default => 'text-gray-700 bg-gray-500/10 dark:text-gray-500',
         },
-        'text-gray-700' => $invertTextColor() && $getTextColor(),
+        'text-gray-700' => $invertTextColor() && $textColor,
         'rounded py-1' => ! $isPill,
         'rounded-full py-0.5' => $isPill,
     ])
-    {!! $hasHexColor() ? "style=\"background-color:" . $color . "; color:" . $getTextColor() . " !important;\"" : null !!}
+    {!! $hasHexColor() ? "style=\"background-color:" . $color . "; color:" . $textColor . " !important;\"" : null !!}
 >{{ $getLabel() }}</span>
 @endif
