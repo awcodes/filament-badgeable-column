@@ -86,8 +86,8 @@ return $table
         BadgeableColumn::make('title')
             ->badges(function($record) {
                   return $record->topics->map(function($topic) {
-                    return Badge::make($topic->name)->color($topic->color)
-                  });
+                    return Badge::make($topic->name)->color($topic->color);
+                  })->toArray();
             })
             ->searchable()
             ->sortable(),
