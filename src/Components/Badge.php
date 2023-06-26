@@ -7,6 +7,7 @@ use Awcodes\FilamentBadgeableColumn\Components\Concerns\HasColor;
 use Closure;
 use Filament\Support\Components\ViewComponent;
 use Filament\Tables\Columns\Column;
+use Filament\Tables\Columns\Concerns\CanBeCopied;
 use Filament\Tables\Columns\Concerns\CanBeHidden;
 use Filament\Tables\Columns\Concerns\HasLabel;
 use Filament\Tables\Columns\Concerns\HasName;
@@ -21,6 +22,7 @@ class Badge extends ViewComponent
     use HasRecord;
     use CanBeHidden;
     use CanBePill;
+    use CanBeCopied;
 
     protected string $view = 'filament-badgeable-column::components.badge';
 

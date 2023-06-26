@@ -2,10 +2,15 @@
     $color = $getColor();
     $isPill = $shouldBePill();
     $textColor = $getTextColor();
+    $isCopyable = $isCopyable();
 @endphp
 
 @if (! $isHidden())
 <span
+    @if ($isCopyable) x-on:click="
+                    window.navigator.clipboard.writeText(@js($getLabel()))
+                    $tooltip(@js($getCopyMessage()), { timeout: @js($getCopyMessageDuration()) })
+                " @endif
     @class([
         'filament-badgeable-badge px-2 inline-flex  text-xs font-medium',
         match($color) {
@@ -19,6 +24,7 @@
         'text-gray-700' => $invertTextColor() && $textColor,
         'rounded py-1' => ! $isPill,
         'rounded-full py-0.5' => $isPill,
+        'cursor-pointer' => $isCopyable,
     ])
     {!! $hasHexColor() ? "style=\"background-color:" . $color . "; color:" . $textColor . " !important;\"" : null !!}
 >{{ $getLabel() }}</span>
