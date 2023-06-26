@@ -2,9 +2,9 @@
 
 namespace Awcodes\Badger\Components;
 
-use Awcodes\Badger\Components\Concerns\CanBePill;
-use Awcodes\Badger\Components\Concerns\HasColors;
+use Closure;
 use Filament\Support\Components\ViewComponent;
+use Filament\Support\Concerns\HasColor;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Concerns\CanBeHidden;
 use Filament\Tables\Columns\Concerns\HasLabel;
@@ -18,8 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 class Badge extends ViewComponent
 {
     use CanBeHidden;
-    use CanBePill;
-    use HasColors;
+    use HasColor;
     use HasLabel;
     use HasName;
     use HasRecord;
@@ -31,6 +30,8 @@ class Badge extends ViewComponent
 
     protected Column $column;
 
+    protected bool | Closure | null $shouldBePill = true;
+
     final public function __construct(string $name)
     {
         $this->name($name);
@@ -39,6 +40,13 @@ class Badge extends ViewComponent
     public static function make(string $name): static
     {
         return app(static::class, ['name' => $name]);
+    }
+
+    public function isPill(bool | Closure | null $condition): static
+    {
+        $this->shouldBePill = $condition;
+
+        return $this;
     }
 
     public function column(Column $column): static
@@ -60,5 +68,10 @@ class Badge extends ViewComponent
             'state' => [$this->getLabel()],
             default => parent::resolveDefaultClosureDependencyForEvaluationByName($parameterName),
         };
+    }
+
+    public function shouldBePill(): bool
+    {
+        return $this->evaluate($this->shouldBePill);
     }
 }

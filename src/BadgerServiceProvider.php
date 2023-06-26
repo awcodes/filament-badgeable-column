@@ -16,8 +16,7 @@ class BadgerServiceProvider extends PackageServiceProvider
     {
         $package->name(static::$name)
             ->hasAssets()
-            ->hasViews()
-            ->hasTranslations();
+            ->hasViews();
     }
 
     public function packageRegistered(): void
