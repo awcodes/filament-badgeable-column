@@ -5,12 +5,6 @@
 
 With Filament Badgeable Column you append badges to your columns.
 
-![Light View](./images/light.png)
-
-![Dark View](./images/dark.png)
-
-![With Tags View](./images/with-tags.png)
-
 ## Installation
 
 You can install the package via composer:
@@ -19,17 +13,7 @@ You can install the package via composer:
 composer require awcodes/filament-badgeable-column
 ```
 
-Optionally, you can publish the views, translations and assets using
-
-```bash
-php artisan vendor:publish --tag="filament-badgeable-column-views"
-php artisan vendor:publish --tag="filament-badgeable-column-translations"
-php artisan vendor:publish --tag="filament-badgeable-column-assets"
-```
-
 ## Usage
-
-### BadgeableColumn
 
 ```php
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
