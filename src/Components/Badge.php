@@ -1,6 +1,6 @@
 <?php
 
-namespace Awcodes\Badger\Components;
+namespace Awcodes\FilamentBadgeableColumn\Components;
 
 use Closure;
 use Filament\Support\Components\ViewComponent;
@@ -26,7 +26,7 @@ class Badge extends ViewComponent
     use HasSize;
     use HasWeight;
 
-    protected string $view = 'badger::components.badge';
+    protected string $view = 'filament-badgeable-column::components.badge';
 
     protected Column $column;
 

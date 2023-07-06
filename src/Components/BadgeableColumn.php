@@ -1,11 +1,11 @@
 <?php
 
-namespace Awcodes\Badger\Components;
+namespace Awcodes\FilamentBadgeableColumn\Components;
 
 use Closure;
 use Filament\Tables\Columns\TextColumn;
 
-class BadgerColumn extends TextColumn
+class BadgeableColumn extends TextColumn
 {
     protected array|Closure $prefixBadges = [];
 
