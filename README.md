@@ -17,52 +17,37 @@ composer require awcodes/filament-badgeable-column
 
 ```php
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
-use Awcodes\FilamentBadgeableColumn\Components\BadgeField;
 use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
 
 return $table
     ->columns([
-        BadgeableColumn::make('title')
-            ->badges([
-                Badge::make('front_page')
-                    ->label('Front Page')
-                    ->color('success')
-                    ->visible(fn ($record): bool => $record->front_page),
-                Badge::make('front_page_custom_color')
-                    ->label('Badass')
-                    ->color('#bada55')
-                    ->visible(fn ($record): bool => $record->front_page),
-                Badge::make('trashed')
-                    ->label('Trashed')
+        BadgeableColumn::make('name')
+            ->suffixBadges([
+                Badge::make('hot')
+                    ->label('Hot')
                     ->color('danger')
-                    ->visible(fn ($record): bool => $record->deleted_at ?? false),
-                BadgeField::make('status')
-                    ->options([
-                        'Draft' => 'Draft',
-                        'Review' => 'In Review',
-                        'Published' => 'Published'
-                    ])
-                    ->colors([
-                        'gray' => 'Draft',
-                        'warning' => 'Review',
-                        'success' => 'Published',
-                    ])
-                    ->visible(fn ($record): bool => $record->status !== Status::Published->name)
+                    ->visible(fn(Model $record) => $record->qty < 5),
             ])
-            ->searchable()
-            ->sortable(),
+            ->prefixBadges([
+                Badge::make('brand_name')
+                    ->label(fn(Model $record) => $record->status)
+                    ->color(function(Model $record) {
+                        return match ($record->status) {
+                            'active' => 'success',
+                            'inactive' => 'danger',
+                            default => 'warning',
+                        };
+                    })
+            ])
     ]);
 ```
 
-You can also define the array of badges via a closure, if you want the array of badges to be based on dynamic data. The
-closure should return an array of `Badge` or `BadgeField` objects, similar to above.
+You can also define the array of badges via a closure, if you want the array of badges to be based on dynamic data. The closure should return an array of `Badge` objects, similar to above.
 
-The example below assumes the records have a `BelongsToMany` relationship called `topics`, and shows how to display each
-topic name as a badge.
+The example below assumes the records have a `BelongsToMany` relationship called `topics`, and shows how to display each topic name as a badge.
 
 ```php
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
-use Awcodes\FilamentBadgeableColumn\Components\BadgeField;
 use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
 
 return $table
@@ -78,72 +63,25 @@ return $table
     ]);
 ```
 
-### Badgeable Tags Column
+## Badgeable Tags Column
 
-This is similar to the `Badgeable Column` except it allows you to use an
-array of data to simply output badges in the column. You field must return
-an array from the record.
-
-```php
-use Awcodes\FilamentBadgeableColumn\Components\BadgeableTagsColumn;
-
-BadgeableTagsColumn::make('tags')
-    ->colors([
-        'gray',
-        'primary' => 'Dan',
-        '#bada55' => 'Zep',
-        'warning' => 'Dennis',
-        '#0e7490' => 'Ryan',
-    ]),
-```
-
-## Wrapping
-
-If you need to wrap the badges to keep your columns from getting too wide you can use the `wrapEvery()` method to tell the column where to break.
-
-```php
-use Awcodes\FilamentBadgeableColumn\Components\BadgeableTagsColumn;
-
-BadgeableTagsColumn::make('tags')
-    ->wrapEvery(3)
-```
+> **Warning**
+> The Badgeable Tags Column has been deprecated please use the `TextColumn` `badge()` method instead.
 
 ## Badge Shape
 
-If you prefer to have a more "square" shape you can use the `asPills()`
-method to set the shape of the badges. The default is that each badge
-will be a pill shape.
+If you prefer to have a more "rounded" shape you can use the `asPills()`
+method to set the shape of the badges.
 
 ```php
-use Awcodes\FilamentBadgeableColumn\Components\BadgeableTagsColumn;
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
 
-BadgeableTagsColumn::make('tags')
-    ->asPills(false)
-    ->colors([
-        'gray',
-        'primary' => 'Dan',
-        '#bada55' => 'Zep',
-        'warning' => 'Dennis',
-        '#0e7490' => 'Ryan',
-    ]),
-```
-
-## Badge Text Color
-
-You may customize the color of the label for a badge with the `textColor` 
-method. ***This only works with custom colors***.
-
-```php
-Badge::make('front_page_custom_color')
-    ->label('Badass')
-    ->color('#bada55')
-    ->textColor('#ff0000')
-```
-
-## Testing
-
-```bash
-composer test
+return $table
+    ->columns([
+        BadgeableColumn::make('name')
+            ->asPills()
+    ]);
 ```
 
 ## Changelog

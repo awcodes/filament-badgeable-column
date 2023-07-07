@@ -7,10 +7,10 @@ use Filament\Support\Components\ViewComponent;
 use Filament\Support\Concerns\HasColor;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Columns\Concerns\CanBeHidden;
+use Filament\Tables\Columns\Concerns\HasFontFamily;
 use Filament\Tables\Columns\Concerns\HasLabel;
 use Filament\Tables\Columns\Concerns\HasName;
 use Filament\Tables\Columns\Concerns\HasRecord;
-use Filament\Tables\Columns\Concerns\HasFontFamily;
 use Filament\Tables\Columns\Concerns\HasSize;
 use Filament\Tables\Columns\Concerns\HasWeight;
 use Illuminate\Database\Eloquent\Model;
@@ -30,7 +30,7 @@ class Badge extends ViewComponent
 
     protected Column $column;
 
-    protected bool | Closure | null $shouldBePill = true;
+    protected bool|Closure|null $shouldBePill = true;
 
     final public function __construct(string $name)
     {
@@ -42,7 +42,7 @@ class Badge extends ViewComponent
         return app(static::class, ['name' => $name]);
     }
 
-    public function isPill(bool | Closure | null $condition): static
+    public function isPill(bool|Closure|null $condition): static
     {
         $this->shouldBePill = $condition;
 
