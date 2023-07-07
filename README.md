@@ -5,7 +5,7 @@
 
 ![badgeable-column-og](https://github.com/awcodes/filament-badgeable-column/assets/3596800/027fa30c-807c-43cb-89bc-cf2fdb27fd74)
 
-With Filament Badgeable Column you append badges to your columns.
+With Filament Badgeable Column you prepend and append badges to your columns.
 
 ## Installation
 
