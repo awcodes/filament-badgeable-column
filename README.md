@@ -3,6 +3,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
 
+![badgeable-column-og](https://github.com/awcodes/filament-badgeable-column/assets/3596800/027fa30c-807c-43cb-89bc-cf2fdb27fd74)
+
 With Filament Badgeable Column you append badges to your columns.
 
 ## Installation
