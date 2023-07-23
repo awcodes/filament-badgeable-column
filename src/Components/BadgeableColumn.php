@@ -4,6 +4,7 @@ namespace Awcodes\FilamentBadgeableColumn\Components;
 
 use Closure;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Support\Str;
 
 class BadgeableColumn extends TextColumn
 {
@@ -32,10 +33,16 @@ class BadgeableColumn extends TextColumn
         $badgesHtml = '';
 
         foreach ($badges as $k => $badge) {
-            $badgesHtml .= $badge
+            $badgeHtml = $badge
                 ->column($this)
                 ->isPill($this->shouldBePills())
                 ->render();
+
+            $badgesHtml .= Str::of($badgeHtml)
+                ->replace('<!-- __BLOCK__ --> ', '')
+                ->replace('<!-- __ENDBLOCK__ -->', '')
+                ->replace("/n", '')
+                ->trim();
         }
 
         return $badgesHtml;
