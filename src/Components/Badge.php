@@ -30,7 +30,7 @@ class Badge extends ViewComponent
 
     protected Column $column;
 
-    protected bool|Closure|null $shouldBePill = true;
+    protected bool | Closure | null $shouldBePill = true;
 
     final public function __construct(string $name)
     {
@@ -42,7 +42,7 @@ class Badge extends ViewComponent
         return app(static::class, ['name' => $name]);
     }
 
-    public function isPill(bool|Closure|null $condition): static
+    public function isPill(bool | Closure | null $condition): static
     {
         $this->shouldBePill = $condition;
 

@@ -8,25 +8,25 @@ use Illuminate\Support\Str;
 
 class BadgeableColumn extends TextColumn
 {
-    protected array|Closure $prefixBadges = [];
+    protected array | Closure $prefixBadges = [];
 
-    protected array|Closure $suffixBadges = [];
+    protected array | Closure $suffixBadges = [];
 
-    protected bool|Closure $asPills = false;
+    protected bool | Closure $asPills = false;
 
     protected function setUp(): void
     {
         $this->html();
     }
 
-    public function asPills(bool|Closure $condition = true): static
+    public function asPills(bool | Closure $condition = true): static
     {
         $this->asPills = $condition;
 
         return $this;
     }
 
-    public function getBadges(array $badges): string
+    public function getBadges(array | Closure $badges): string
     {
         // only evaluate the badges at the point of retrieval, to ensure the rest of the livewire component stack + needed data is available.
         $badges = $this->evaluate($badges);
@@ -41,7 +41,7 @@ class BadgeableColumn extends TextColumn
             $badgesHtml .= Str::of($badgeHtml)
                 ->replace('<!-- __BLOCK__ --> ', '')
                 ->replace('<!-- __ENDBLOCK__ -->', '')
-                ->replace("/n", '')
+                ->replace('/n', '')
                 ->trim();
         }
 
@@ -53,7 +53,7 @@ class BadgeableColumn extends TextColumn
         $badges = $this->getPrefixBadges();
 
         if ($badges) {
-            return $badges.' <span style="opacity: 0.375;">&mdash;</span> '.parent::getPrefix();
+            return $badges . ' <span style="opacity: 0.375;">&mdash;</span> ' . parent::getPrefix();
         }
 
         return parent::getPrefix();
@@ -69,7 +69,7 @@ class BadgeableColumn extends TextColumn
         $badges = $this->getSuffixBadges();
 
         if ($badges) {
-            return parent::getSuffix().' <span style="opacity: 0.375;">&mdash;</span> '.$badges;
+            return parent::getSuffix() . ' <span style="opacity: 0.375;">&mdash;</span> ' . $badges;
         }
 
         return parent::getSuffix();
@@ -80,7 +80,7 @@ class BadgeableColumn extends TextColumn
         return $this->getBadges($this->suffixBadges);
     }
 
-    public function prefixBadges(array|Closure $badges): static
+    public function prefixBadges(array | Closure $badges): static
     {
         $this->prefixBadges = $badges;
 
@@ -92,7 +92,7 @@ class BadgeableColumn extends TextColumn
         return $this->evaluate($this->asPills);
     }
 
-    public function suffixBadges(array|Closure $badges): static
+    public function suffixBadges(array | Closure $badges): static
     {
         $this->suffixBadges = $badges;
 
