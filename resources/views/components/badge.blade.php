@@ -7,13 +7,6 @@
                 true => 'rounded-full',
                 default => 'rounded',
             },
-            match ($getSize(null) ?? 'xs') {
-                'xs' => 'text-xs',
-                'sm', null => 'text-sm',
-                'base', 'md' => 'text-base',
-                'lg' => 'text-lg',
-                default => null,
-            },
             match ($getWeight(null) ?? 'medium') {
                 'thin' => 'font-thin',
                 'extralight' => 'font-extralight',
