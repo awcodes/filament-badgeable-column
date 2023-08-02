@@ -15,6 +15,19 @@ You can install the package via composer:
 composer require awcodes/filament-badgeable-column
 ```
 
+In an effort to align with Filament's theming methodology you will need to use a custom theme to use this plugin.
+
+> **Note**
+> If you have not set up a custom theme and are using a Panel follow the instructions in the [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) first. The following applies to both the Panels Package and the standalone Forms package.
+
+Add the plugin's views to your `tailwind.config.js` file.
+
+```js
+content: [
+    '<path-to-vendor>/awcodes/filament-badgeable-column/resources/**/*.blade.php',
+]
+```
+
 ## Usage
 
 ```php
