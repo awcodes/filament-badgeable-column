@@ -68,7 +68,7 @@ use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
 return $table
     ->columns([
         BadgeableColumn::make('title')
-            ->badges(function($record) {
+            ->suffixBadges(function($record) {
                   return $record->topics->map(function($topic) {
                     return Badge::make($topic->name)->color($topic->color);
                   });
