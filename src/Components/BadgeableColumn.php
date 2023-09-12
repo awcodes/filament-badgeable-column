@@ -53,7 +53,7 @@ class BadgeableColumn extends TextColumn
         $badges = $this->getPrefixBadges();
 
         if ($badges) {
-            return $badges . ' <span style="opacity: 0.375;">&mdash;</span> ' . parent::getPrefix();
+            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">&mdash;</span> ' . parent::getPrefix();
         }
 
         return parent::getPrefix();
@@ -69,7 +69,7 @@ class BadgeableColumn extends TextColumn
         $badges = $this->getSuffixBadges();
 
         if ($badges) {
-            return parent::getSuffix() . ' <span style="opacity: 0.375;">&mdash;</span> ' . $badges;
+            return parent::getSuffix() . ' <span style="opacity: 0.375;">&mdash;</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
         }
 
         return parent::getSuffix();
