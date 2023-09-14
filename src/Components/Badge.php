@@ -39,7 +39,9 @@ class Badge extends ViewComponent
 
     public static function make(string $name): static
     {
-        return app(static::class, ['name' => $name]);
+        $static = app(static::class, ['name' => $name]);
+        $static->configure();
+        return $static;
     }
 
     public function isPill(bool | Closure | null $condition): static
