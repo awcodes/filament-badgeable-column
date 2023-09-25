@@ -1,17 +1,28 @@
+@php
+    use Awcodes\FilamentBadgeableColumn\Badge\BadgeSize;
+@endphp
+
 @if (! $isHidden())
     @php
-        $color = $getColor() ?? 'gray';
+        $color = $getColor();
+
+        $size = match ($size = $getSize()) {
+            BadgeSize::ExtraSmall, 'xs' => 'xs',
+            BadgeSize::Small, 'sm', null => 'sm',
+            BadgeSize::Medium, 'base', 'md' => 'md',
+            default => $size,
+        };
+
         $badgeClasses = \Illuminate\Support\Arr::toCssClasses([
-            "badger-badge px-2 inline-flex py-0.5",
-            match ($isPill = $shouldBePill()) {
-                true => 'rounded-full',
-                default => 'rounded',
+            "badger-badge",
+            match ($shouldBePill()) {
+                true => 'px-2 !rounded-full',
+                default => null,
             },
-            match ($getSize(null) ?? 'xs') {
-                'xs' => 'text-xs',
-                'sm', null => 'text-sm',
-                'base', 'md' => 'text-base',
-                'lg' => 'text-lg',
+            match ($getFontFamily(null)) {
+                'sans' => 'font-sans',
+                'serif' => 'font-serif',
+                'mono' => 'font-mono',
                 default => null,
             },
             match ($getWeight(null) ?? 'medium') {
@@ -24,23 +35,9 @@
                 'extrabold' => 'font-extrabold',
                 'black' => 'font-black',
                 default => null,
-            },
-            match ($getFontFamily(null)) {
-                'sans' => 'font-sans',
-                'serif' => 'font-serif',
-                'mono' => 'font-mono',
-                default => null,
-            },
-            match ($color) {
-                'gray' => 'bg-gray-500/10 text-gray-700 dark:bg-gray-500/20 dark:text-gray-300',
-                default => 'bg-custom-500/10 text-custom-700 dark:text-custom-500',
-            },
+            }
         ]);
-
-        $badgeStyles = \Illuminate\Support\Arr::toCssStyles([
-            \Filament\Support\get_color_css_variables($color, shades: [300, 500, 700]) => $color !== 'gray',
-        ]);
-
     @endphp
-<span class="{{ $badgeClasses }}" style="{{ $badgeStyles }}">{{ $getLabel() }}</span>
+
+    <x-filament::badge :class="$badgeClasses" :$color :$size>{{ $getLabel() }}</x-filament::badge>
 @endif

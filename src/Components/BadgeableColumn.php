@@ -89,7 +89,7 @@ class BadgeableColumn extends TextColumn
 
     public function shouldBePills(): bool
     {
-        return $this->evaluate($this->asPills);
+        return (bool) $this->evaluate($this->asPills);
     }
 
     public function suffixBadges(array | Closure $badges): static

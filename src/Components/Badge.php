@@ -2,8 +2,8 @@
 
 namespace Awcodes\FilamentBadgeableColumn\Components;
 
+use Awcodes\FilamentBadgeableColumn\Badge\BadgeSize;
 use Closure;
-use Filament\Actions\Concerns\HasSize;
 use Filament\Support\Components\ViewComponent;
 use Filament\Support\Concerns\HasColor;
 use Filament\Tables\Columns\Column;
@@ -19,11 +19,10 @@ class Badge extends ViewComponent
 {
     use CanBeHidden;
     use HasColor;
+    use HasFontFamily;
     use HasLabel;
     use HasName;
     use HasRecord;
-    use HasFontFamily;
-    use HasSize;
     use HasWeight;
 
     protected string $view = 'filament-badgeable-column::components.badge';
@@ -31,6 +30,8 @@ class Badge extends ViewComponent
     protected Column $column;
 
     protected bool | Closure | null $shouldBePill = true;
+
+    protected BadgeSize | string | Closure | null $size = null;
 
     final public function __construct(string $name)
     {
@@ -41,6 +42,7 @@ class Badge extends ViewComponent
     {
         $static = app(static::class, ['name' => $name]);
         $static->configure();
+
         return $static;
     }
 
@@ -51,11 +53,23 @@ class Badge extends ViewComponent
         return $this;
     }
 
+    public function size(BadgeSize | string | Closure | null $size): static
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
     public function column(Column $column): static
     {
         $this->column = $column;
 
         return $this;
+    }
+
+    public function getSize(): BadgeSize | string | null
+    {
+        return $this->evaluate($this->size);
     }
 
     public function getRecord(): ?Model
@@ -74,6 +88,6 @@ class Badge extends ViewComponent
 
     public function shouldBePill(): bool
     {
-        return $this->evaluate($this->shouldBePill);
+        return (bool) $this->evaluate($this->shouldBePill);
     }
 }
