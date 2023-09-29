@@ -1,5 +1,5 @@
 @php
-    use Awcodes\FilamentBadgeableColumn\Badge\BadgeSize;
+    use Awcodes\FilamentBadgeableColumn\Enums\BadgeSize;
 @endphp
 
 @if (! $isHidden())
@@ -14,7 +14,7 @@
         };
 
         $badgeClasses = \Illuminate\Support\Arr::toCssClasses([
-            "badger-badge",
+            "badgeable-column-badge",
             match ($shouldBePill()) {
                 true => 'px-2 !rounded-full',
                 default => null,
