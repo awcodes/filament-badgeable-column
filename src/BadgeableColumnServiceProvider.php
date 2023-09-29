@@ -20,7 +20,7 @@ class BadgeableColumnServiceProvider extends PackageServiceProvider
     {
         Filament::getCurrentPanel()->renderHook(
             name: 'panels::styles.after',
-            hook: fn() => new HtmlString('<style>.badgeable-column-badge .truncate { overflow: visible !important; }</style>')
+            hook: fn () => new HtmlString('<style>.badgeable-column-badge .truncate { overflow: visible !important; }</style>')
         );
     }
 }
