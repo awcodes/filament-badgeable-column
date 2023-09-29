@@ -3,6 +3,8 @@
 namespace Awcodes\FilamentBadgeableColumn;
 
 use Filament\Facades\Filament;
+use Filament\Support\Assets\Css;
+use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\HtmlString;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -18,9 +20,8 @@ class BadgeableColumnServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        Filament::getCurrentPanel()->renderHook(
-            name: 'panels::styles.after',
-            hook: fn() => new HtmlString('<style>.badgeable-column-badge .truncate { overflow: visible !important; }</style>')
-        );
+        FilamentAsset::register([
+            Css::make('filament-badgeable-column', __DIR__ . '/../resources/dist/badgeable-column.css')
+        ], 'awcodes/filament-badgeable-column');
     }
 }
