@@ -2,7 +2,7 @@
 
 namespace Awcodes\FilamentBadgeableColumn\Components;
 
-use Awcodes\FilamentBadgeableColumn\Badge\BadgeSize;
+use Awcodes\FilamentBadgeableColumn\Enums\BadgeSize;
 use Closure;
 use Filament\Support\Components\ViewComponent;
 use Filament\Support\Concerns\HasColor;
