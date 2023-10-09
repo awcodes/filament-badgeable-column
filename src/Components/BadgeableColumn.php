@@ -41,6 +41,8 @@ class BadgeableColumn extends TextColumn
             $badgesHtml .= Str::of($badgeHtml)
                 ->replace('<!-- __BLOCK__ --> ', '')
                 ->replace('<!-- __ENDBLOCK__ -->', '')
+                ->replace('<!--[if BLOCK]><![endif]-->', '')
+                ->replace('<!--[if ENDBLOCK]><![endif]-->','')
                 ->replace('/n', '')
                 ->trim();
         }
