@@ -4,6 +4,7 @@ namespace Awcodes\FilamentBadgeableColumn\Components;
 
 use Awcodes\FilamentBadgeableColumn\Enums\BadgeSize;
 use Closure;
+use Filament\Infolists\Components\Entry;
 use Filament\Support\Components\ViewComponent;
 use Filament\Support\Concerns\HasColor;
 use Filament\Tables\Columns\Column;
@@ -27,7 +28,7 @@ class Badge extends ViewComponent
 
     protected string $view = 'filament-badgeable-column::components.badge';
 
-    protected Column $column;
+    protected Column | Entry $column;
 
     protected bool | Closure | null $shouldBePill = true;
 
@@ -60,7 +61,7 @@ class Badge extends ViewComponent
         return $this;
     }
 
-    public function column(Column $column): static
+    public function column(Column | Entry $column): static
     {
         $this->column = $column;
 

@@ -3,9 +3,9 @@
 namespace Awcodes\FilamentBadgeableColumn\Components;
 
 use Awcodes\FilamentBadgeableColumn\Concerns\HasBadges;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Infolists\Components\TextEntry;
 
-class BadgeableColumn extends TextColumn
+class BadgeableEntry extends TextEntry
 {
     use HasBadges;
 }
