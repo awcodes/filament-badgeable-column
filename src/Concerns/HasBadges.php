@@ -13,6 +13,8 @@ trait HasBadges
 
     protected bool | Closure $asPills = false;
 
+    protected ?string $badgeSeparator = '&mdash;';
+
     protected function setUp(): void
     {
         $this->html();
@@ -41,7 +43,7 @@ trait HasBadges
                 ->replace('<!-- __BLOCK__ --> ', '')
                 ->replace('<!-- __ENDBLOCK__ -->', '')
                 ->replace('<!--[if BLOCK]><![endif]-->', '')
-                ->replace('<!--[if ENDBLOCK]><![endif]-->','')
+                ->replace('<!--[if ENDBLOCK]><![endif]-->', '')
                 ->replace('/n', '')
                 ->trim();
         }
@@ -53,8 +55,10 @@ trait HasBadges
     {
         $badges = $this->getPrefixBadges();
 
+        $badgeSeparator = $this->getBadgeSeparator();
+
         if ($badges) {
-            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">&mdash;</span> ' . parent::getPrefix();
+            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">' . $badgeSeparator . '</span> ' . parent::getPrefix();
         }
 
         return parent::getPrefix();
@@ -69,8 +73,10 @@ trait HasBadges
     {
         $badges = $this->getSuffixBadges();
 
+        $badgeSeparator = $this->getBadgeSeparator();
+
         if ($badges) {
-            return parent::getSuffix() . ' <span style="opacity: 0.375;">&mdash;</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
+            return parent::getSuffix() . ' <span style="opacity: 0.375;">' . $badgeSeparator . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
         }
 
         return parent::getSuffix();
@@ -98,5 +104,17 @@ trait HasBadges
         $this->suffixBadges = $badges;
 
         return $this;
+    }
+
+    public function separateWith(?string $separator = null): static
+    {
+        $this->badgeSeparator = $separator;
+
+        return $this;
+    }
+
+    public function getBadgeSeparator(): ?string
+    {
+        return $this->badgeSeparator;
     }
 }
