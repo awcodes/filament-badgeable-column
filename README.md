@@ -88,6 +88,17 @@ return $table
 If you prefer to have a more "rounded" shape you can use the `asPills()`
 method to set the shape of the badges.
 
+```php
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+
+return $table
+    ->columns([
+        BadgeableColumn::make('name')
+            ->asPills()
+    ]);
+```
+
 ## Separator
 
 The default separator between the column text and the badges is '&mdash;'. 
@@ -101,9 +112,14 @@ use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
 return $table
     ->columns([
         BadgeableColumn::make('name')
-            ->asPills()
+            ->separateWith(':')
+
+            // or
+
+            ->separateWith()
     ]);
 ```
+
 
 ## Changelog
 
