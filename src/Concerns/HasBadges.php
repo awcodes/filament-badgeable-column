@@ -41,7 +41,7 @@ trait HasBadges
                 ->replace('<!-- __BLOCK__ --> ', '')
                 ->replace('<!-- __ENDBLOCK__ -->', '')
                 ->replace('<!--[if BLOCK]><![endif]-->', '')
-                ->replace('<!--[if ENDBLOCK]><![endif]-->','')
+                ->replace('<!--[if ENDBLOCK]><![endif]-->', '')
                 ->replace('/n', '')
                 ->trim();
         }
@@ -54,7 +54,7 @@ trait HasBadges
         $badges = $this->getPrefixBadges();
 
         if ($badges) {
-            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">&mdash;</span> ' . parent::getPrefix();
+            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeperator() . '</span> ' . parent::getPrefix();
         }
 
         return parent::getPrefix();
@@ -70,7 +70,7 @@ trait HasBadges
         $badges = $this->getSuffixBadges();
 
         if ($badges) {
-            return parent::getSuffix() . ' <span style="opacity: 0.375;">&mdash;</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
+            return parent::getSuffix() . ' <span style="opacity: 0.375;">' . $this->getSeperator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
         }
 
         return parent::getSuffix();
@@ -98,5 +98,10 @@ trait HasBadges
         $this->suffixBadges = $badges;
 
         return $this;
+    }
+
+    public function getSeparator(): ?string
+    {
+        return $this->evaluate($this->separator) ?? '&mdash;';
     }
 }
