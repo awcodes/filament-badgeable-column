@@ -54,7 +54,7 @@ trait HasBadges
         $badges = $this->getPrefixBadges();
 
         if ($badges) {
-            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeperator() . '</span> ' . parent::getPrefix();
+            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeparator() . '</span> ' . parent::getPrefix();
         }
 
         return parent::getPrefix();
@@ -70,7 +70,7 @@ trait HasBadges
         $badges = $this->getSuffixBadges();
 
         if ($badges) {
-            return parent::getSuffix() . ' <span style="opacity: 0.375;">' . $this->getSeperator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
+            return parent::getSuffix() . ' <span style="opacity: 0.375;">' . $this->getSeparator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
         }
 
         return parent::getSuffix();
