@@ -99,28 +99,6 @@ return $table
     ]);
 ```
 
-## Separator
-
-The default separator between the column text and the badges is '&mdash;'. 
-If you would like to use a different separator, use the `separateWith()`
-method to set a character or characters to be used as a separator.
-
-```php
-use Awcodes\FilamentBadgeableColumn\Components\Badge;
-use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
-
-return $table
-    ->columns([
-        BadgeableColumn::make('name')
-            ->separateWith(':')
-
-            // or
-
-            ->separateWith()
-    ]);
-```
-
-
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
