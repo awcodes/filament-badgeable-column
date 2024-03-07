@@ -3,6 +3,8 @@
 namespace Awcodes\FilamentBadgeableColumn\Concerns;
 
 use Closure;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 
 trait HasBadges
@@ -49,12 +51,12 @@ trait HasBadges
         return $badgesHtml;
     }
 
-    public function getPrefix(): ?string
+    public function getPrefix(): string | Htmlable | null
     {
         $badges = $this->getPrefixBadges();
 
         if ($badges) {
-            return '<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeparator() . '</span> ' . parent::getPrefix();
+            return new HtmlString('<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeparator() . '</span> ' . parent::getPrefix());
         }
 
         return parent::getPrefix();
@@ -65,12 +67,12 @@ trait HasBadges
         return $this->getBadges($this->prefixBadges);
     }
 
-    public function getSuffix(): ?string
+    public function getSuffix(): string | Htmlable | null
     {
         $badges = $this->getSuffixBadges();
 
         if ($badges) {
-            return parent::getSuffix() . ' <span style="opacity: 0.375;">' . $this->getSeparator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>';
+            return new HtmlString(parent::getSuffix() . ' <span style="opacity: 0.375;">' . $this->getSeparator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>');
         }
 
         return parent::getSuffix();
