@@ -1,8 +1,10 @@
 <?php
 
-namespace Awcodes\FilamentBadgeableColumn\Components;
+declare(strict_types=1);
 
-use Awcodes\FilamentBadgeableColumn\Concerns\HasBadges;
+namespace Awcodes\BadgeableColumn\Components;
+
+use Awcodes\BadgeableColumn\Concerns\HasBadges;
 use Filament\Tables\Columns\TextColumn;
 
 class BadgeableColumn extends TextColumn

@@ -1,14 +1,14 @@
 {
-    "name": "awcodes/filament-badgeable-column",
+    "name": "awcodes/badgeable-column",
     "description": "Filament Tables column to append and prepend badges.",
     "keywords": [
         "awcodes",
         "laravel",
         "filament",
-        "filament-badgeable-column",
-        "badger"
+        "badgeable-column",
+        "plugin"
     ],
-    "homepage": "https://github.com/awcodes/badger",
+    "homepage": "https://github.com/awcodes/badgeable-column",
     "license": "MIT",
     "authors": [
         {
@@ -18,21 +18,37 @@
         }
     ],
     "require": {
-        "php": "^8.1",
-        "filament/filament": "^3.0",
+        "php": "^8.2",
+        "filament/filament": "^4.0",
         "spatie/laravel-package-tools": "^1.15"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
+        "orchestra/testbench": "^9.0|^10.0",
+        "pestphp/pest": "^3.7",
+        "pestphp/pest-plugin-laravel": "^3.0",
+        "pestphp/pest-plugin-livewire": "^3.0",
+        "rector/rector": "^2.0",
         "spatie/laravel-ray": "^1.26"
     },
     "autoload": {
         "psr-4": {
-            "Awcodes\\FilamentBadgeableColumn\\": "src"
+            "Awcodes\\BadgeableColumn\\": "src",
+            "Awcodes\\BadgeableColumn\\Tests\\": "tests/src",
+            "Awcodes\\BadgeableColumn\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
     },
     "scripts": {
-        "pint": "vendor/bin/pint"
+        "lint": "pint",
+        "refactor": "rector",
+        "test:lint": "pint --test",
+        "test:refactor": "rector --dry-run",
+        "test:unit": "pest",
+        "test": [
+            "@test:refactor",
+            "@test:lint",
+            "@test:unit"
+        ]
     },
     "config": {
         "sort-packages": true,
@@ -45,7 +61,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Awcodes\\FilamentBadgeableColumn\\BadgeableColumnServiceProvider"
+                "Awcodes\\BadgeableColumn\\BadgeableColumnServiceProvider"
             ]
         }
     },

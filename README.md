@@ -1,31 +1,40 @@
-# Filament Badgeable Column
-
+![badgeable-column-og](https://res.cloudinary.com/aw-codes/image/upload/w_1200,f_auto,q_auto/plugins/badgeable-column/awcodes-badgeable-column.jpg)
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
 
-![badgeable-column-og](https://res.cloudinary.com/aw-codes/image/upload/w_1200,f_auto,q_auto/plugins/badgeable-column/awcodes-badgeable-column.jpg)
+# Badgeable Column
 
-With Filament Badgeable Column you prepend and append badges to your columns.
+Easily add badges to your Filament tables with the Badgeable Column plugin. This package allows you to display badges as suffixes or prefixes in your table columns, enhancing the visual representation of data.
+
+## Compatibility
+
+| Package Version | Filament Version |
+|-----------------|------------------|
+| 1.x             | 2.x              |
+| 2.x             | 3.x              |
+| 3.x             | 4.x              |
+
+## Upgrading from v2 to v3
+
+If you are upgrading from version 2 to version 3, please note that the package has been renamed from `awcodes/filament-badgeable-column` to `awcodes/badgeable-column`. You will need to update your `composer.json` file and run `composer update`.
+
+You will also need to update the namespace anywhere you are using the plugin from `Awcodes\FilamentBadgeableColumn` to `Awcodes\BadgeableColumn`.
 
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require awcodes/filament-badgeable-column
+composer require awcodes/badgeable-column
 ```
 
-In an effort to align with Filament's theming methodology you will need to use a custom theme to use this plugin.
+> [!IMPORTANT]
+> If you have not set up a custom theme and are using Filament Panels follow the instructions in the [Filament Docs](https://filamentphp.com/docs/4.x/styling/overview#creating-a-custom-theme) first. The following applies to both the Panels Package and the standalone Forms package.
 
-> **Note**
-> If you have not set up a custom theme and are using a Panel follow the instructions in the [Filament Docs](https://filamentphp.com/docs/3.x/panels/themes#creating-a-custom-theme) first. The following applies to both the Panels Package and the standalone Forms package.
+After setting up a custom theme add the plugin's views to your theme css file or your app's css file if using the standalone tables package.
 
-Add the plugin's views to your `tailwind.config.js` file.
-
-```js
-content: [
-    '<path-to-vendor>/awcodes/filament-badgeable-column/resources/**/*.blade.php',
-]
+```css
+@source '../../../../vendor/awcodes/badgeable-column/resources/**/*.blade.php';
 ```
 
 ## Usage
@@ -37,12 +46,6 @@ use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
 return $table
     ->columns([
         BadgeableColumn::make('name')
-            ->suffixBadges([
-                Badge::make('hot')
-                    ->label('Hot')
-                    ->color('danger')
-                    ->visible(fn(Model $record) => $record->qty < 5),
-            ])
             ->prefixBadges([
                 Badge::make('brand_name')
                     ->label(fn(Model $record) => $record->status)
@@ -54,6 +57,12 @@ return $table
                         };
                     })
             ])
+            ->suffixBadges([
+                Badge::make('hot')
+                    ->label('Hot')
+                    ->color('danger')
+                    ->visible(fn(Model $record) => $record->qty < 5),
+            ]),
     ]);
 ```
 
@@ -78,15 +87,9 @@ return $table
     ]);
 ```
 
-## Badgeable Tags Column
-
-> **Warning**
-> The Badgeable Tags Column has been deprecated please use the `TextColumn` `badge()` method instead.
-
 ## Badge Shape
 
-If you prefer to have a more "rounded" shape you can use the `asPills()`
-method to set the shape of the badges.
+If you prefer to have a more "rounded" shape you can use the `asPills()` method to set the shape of the badges.
 
 ```php
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
@@ -101,9 +104,7 @@ return $table
 
 ## Separator
 
-The default separator between the column text and the badges is '&mdash;'. 
-If you would like to use a different separator, use the `separator()`
-method to set character to be used as a separator.
+The default separator between the column text and the badges is '&mdash;'. If you would like to use a different separator, use the `separator()` method to set a character to be used as a separator.
 
 ```php
 use Awcodes\FilamentBadgeableColumn\Components\Badge;
@@ -113,6 +114,54 @@ return $table
     ->columns([
         BadgeableColumn::make('name')
             ->separator(':')
+    ]);
+```
+
+## Font Family
+
+If you would like to use a different font family for the badges, you can use the `fontFamily()` method to set the font family.
+
+```php
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+use Filament\Support\Enums\FontFamily;
+
+return $table
+    ->columns([
+        BadgeableColumn::make('name')
+            ->fontFamily(FontFamily::Mono)
+    ]);
+```
+
+## Font Weight
+
+If you would like to use a different font weight for the badges, you can use the `weight()` method to set the font weight.
+
+```php
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+use Filament\Support\Enums\FontWeight;
+
+return $table
+    ->columns([
+        BadgeableColumn::make('name')
+            ->weight(FontWeight::Bold)
+    ]);
+```
+
+## Size
+
+If you would like to use a different size for the badges, you can use the `size()` method to set the size.
+
+```php
+use Awcodes\FilamentBadgeableColumn\Components\Badge;
+use Awcodes\FilamentBadgeableColumn\Components\BadgeableColumn;
+use Filament\Support\Enums\Size;
+
+return $table
+    ->columns([
+        BadgeableColumn::make('name')
+            ->size(Size::Small)
     ]);
 ```
 

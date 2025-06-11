@@ -1,11 +1,9 @@
 <?php
 
-namespace Awcodes\FilamentBadgeableColumn;
+declare(strict_types=1);
 
-use Filament\Facades\Filament;
-use Filament\Support\Assets\Css;
-use Filament\Support\Facades\FilamentAsset;
-use Illuminate\Support\HtmlString;
+namespace Awcodes\BadgeableColumn;
+
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -13,15 +11,8 @@ class BadgeableColumnServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        $package->name('filament-badgeable-column')
+        $package->name('badgeable-column')
             ->hasAssets()
             ->hasViews();
-    }
-
-    public function packageBooted(): void
-    {
-        FilamentAsset::register([
-            Css::make('filament-badgeable-column', __DIR__ . '/../resources/dist/badgeable-column.css')
-        ], 'awcodes/filament-badgeable-column');
     }
 }
