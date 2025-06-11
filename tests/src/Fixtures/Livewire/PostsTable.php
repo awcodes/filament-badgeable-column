@@ -16,7 +16,6 @@ use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class PostsTable extends Component implements HasActions, HasSchemas, Tables\Contracts\HasTable

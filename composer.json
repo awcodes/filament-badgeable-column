@@ -1,5 +1,5 @@
 {
-    "name": "awcodes/badgeable-column",
+    "name": "awcodes/filament-badgeable-column",
     "description": "Filament Tables column to append and prepend badges.",
     "keywords": [
         "awcodes",
@@ -8,7 +8,7 @@
         "badgeable-column",
         "plugin"
     ],
-    "homepage": "https://github.com/awcodes/badgeable-column",
+    "homepage": "https://github.com/awcodes/filament-badgeable-column",
     "license": "MIT",
     "authors": [
         {
