@@ -33,7 +33,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Awcodes\\BadgeableColumn\\": "src",
+            "Awcodes\\BadgeableColumn\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Awcodes\\BadgeableColumn\\Tests\\": "tests/src",
             "Awcodes\\BadgeableColumn\\Tests\\Database\\Factories\\": "tests/database/factories"
         }
