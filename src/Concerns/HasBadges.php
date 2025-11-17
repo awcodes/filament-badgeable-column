@@ -15,11 +15,6 @@ trait HasBadges
 
     protected bool | Closure $asPills = false;
 
-    protected function setUp(): void
-    {
-        $this->html();
-    }
-
     public function asPills(bool | Closure $condition = true): static
     {
         $this->asPills = $condition;
