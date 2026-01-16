@@ -13,6 +13,7 @@ Easily add badges to your Filament tables with the Badgeable Column plugin. This
 | 1.x             | 2.x              |
 | 2.x             | 3.x              |
 | 3.x             | 4.x              |
+| 3.1             | 5.x              |
 
 ## Upgrading from v2 to v3
 
