@@ -25,9 +25,9 @@
     "require-dev": {
         "laravel/pint": "^1.0",
         "orchestra/testbench": "^9.0|^10.0",
-        "pestphp/pest": "^4.3",
-        "pestphp/pest-plugin-laravel": "^4.0",
-        "pestphp/pest-plugin-livewire": "^4.0",
+        "pestphp/pest": "^3.0|^4.3",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0",
+        "pestphp/pest-plugin-livewire": "^3.0|^4.0",
         "rector/rector": "^2.0",
         "spatie/laravel-ray": "^1.26"
     },
