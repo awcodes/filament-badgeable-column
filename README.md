@@ -13,11 +13,7 @@ Easily add badges to your Filament tables with the Badgeable Column plugin. This
 | 1.x             | 2.x              |
 | 2.x             | 3.x              |
 | 3.x             | 4.x              |
-| 3.1             | 5.x              |
-
-## Upgrading from v2 to v3
-
-If you are upgrading from version 2 to version 3, you will need to update the namespace anywhere you are using the plugin from `Awcodes\FilamentBadgeableColumn` to `Awcodes\BadgeableColumn`.
+| 4.x             | 5.x              |
 
 ## Installation
 
