@@ -1,13 +1,11 @@
-<div class="filament-hidden">
+# Badgeable Column
+
+Easily add badges to your Filament tables with the Badgeable Column plugin. This package allows you to display badges as suffixes or prefixes in your table columns, enhancing the visual representation of data.
+
 [![Latest Version](https://img.shields.io/github/release/awcodes/filament-badgeable-column.svg?style=flat-square)](https://github.com/awcodes/filament-badgeable-column/releases)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Total Downloads](https://img.shields.io/packagist/dt/awcodes/filament-badgeable-column.svg?style=flat-square)](https://packagist.org/packages/awcodes/filament-badgeable-column)
 ![GitHub Repo stars](https://img.shields.io/github/stars/awcodes/filament-badgeable-column?style=flat-square)
-
-# Badgeable Column
-
-Easily add badges to your Filament tables with the Badgeable Column plugin. This package allows you to display badges as suffixes or prefixes in your table columns, enhancing the visual representation of data.
-</div>
 
 ## Compatibility
 
