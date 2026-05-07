@@ -17,6 +17,8 @@ Display additional context as badges alongside your Filament table column values
 | 3.x             | 4.x              |
 | 4.x             | 5.x              |
 
+<!-- [docs_start] -->
+
 ## Installation
 
 You can install the package via composer:
@@ -161,6 +163,8 @@ return $table
             ->size(Size::Small)
     ]);
 ```
+
+<!-- [docs_end] -->
 
 ## Changelog
 
