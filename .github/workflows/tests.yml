@@ -23,17 +23,13 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         php: [8.4, 8.3]
-        laravel: [12.*, 11.*]
+        laravel: [13.*, 12.*]
         stability: [prefer-stable]
         include:
+          - laravel: 13.*
+            testbench: 11.*
           - laravel: 12.*
             testbench: 10.*
-            carbon: 3.*
-            collision: 8.*
-          - laravel: 11.*
-            testbench: 9.*
-            carbon: 3.*
-            collision: 8.*
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
     steps:
       - name: Checkout Code
@@ -59,7 +55,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.carbon }}" "nunomaduro/collision:${{ matrix.collision }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
