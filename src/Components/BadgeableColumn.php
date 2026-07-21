@@ -10,4 +10,11 @@ use Filament\Tables\Columns\TextColumn;
 class BadgeableColumn extends TextColumn
 {
     use HasBadges;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->formatStateUsing(static fn (mixed $state): mixed => $state);
+    }
 }
