@@ -118,7 +118,7 @@ return $table
 
 ## Font Family
 
-If you would like to use a different font family for the badges, you can use the `fontFamily()` method to set the font family.
+If you would like to use a different font family for the badges, you can use the `fontFamily()` method on the badge.
 
 ```php
 use Awcodes\BadgeableColumn\Components\Badge;
@@ -128,13 +128,19 @@ use Filament\Support\Enums\FontFamily;
 return $table
     ->columns([
         BadgeableColumn::make('name')
-            ->fontFamily(FontFamily::Mono)
+            ->suffixBadges([
+                Badge::make('status')
+                    ->fontFamily(FontFamily::Mono),
+            ])
     ]);
 ```
 
+> [!NOTE]
+> `fontFamily()`, `weight()` and `size()` also exist on the column itself, inherited from Filament's `TextColumn`. Called there they style the column's own text, not the badges beside it.
+
 ## Font Weight
 
-If you would like to use a different font weight for the badges, you can use the `weight()` method to set the font weight.
+If you would like to use a different font weight for the badges, you can use the `weight()` method on the badge.
 
 ```php
 use Awcodes\BadgeableColumn\Components\Badge;
@@ -144,13 +150,16 @@ use Filament\Support\Enums\FontWeight;
 return $table
     ->columns([
         BadgeableColumn::make('name')
-            ->weight(FontWeight::Bold)
+            ->suffixBadges([
+                Badge::make('status')
+                    ->weight(FontWeight::Bold),
+            ])
     ]);
 ```
 
 ## Size
 
-If you would like to use a different size for the badges, you can use the `size()` method to set the size.
+If you would like to use a different size for the badges, you can use the `size()` method on the badge.
 
 ```php
 use Awcodes\BadgeableColumn\Components\Badge;
@@ -160,7 +169,10 @@ use Filament\Support\Enums\Size;
 return $table
     ->columns([
         BadgeableColumn::make('name')
-            ->size(Size::Small)
+            ->suffixBadges([
+                Badge::make('status')
+                    ->size(Size::Small),
+            ])
     ]);
 ```
 

@@ -1,0 +1,9 @@
+version: 1
+
+title: Badgeable Column
+
+navigation:
+  - index
+  - installation
+  - usage
+  - styling
