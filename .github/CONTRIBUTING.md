@@ -36,6 +36,38 @@ Before submitting a pull request:
 - Check the codebase to ensure that your feature doesn't already exist.
 - Check the pull requests to ensure that another person hasn't already submitted the feature or fix.
 
+## Development
+
+This package ships with an [Orchestra Testbench Workbench](https://packages.tools/testbench/workbench)
+application, so no separate Laravel application is needed to work on it.
+
+Install dependencies:
+
+    composer install
+
+Run the test suite:
+
+    composer test
+
+Build the Workbench application:
+
+    composer build
+
+Start the Workbench application:
+
+    composer serve
+
+The Workbench serves a Filament panel that registers this package and exercises
+`BadgeableColumn` and `BadgeableEntry` on a seeded `Post` resource:
+
+    Workbench: http://127.0.0.1:8000/admin
+
+    Email:    test@example.com
+    Password: password
+
+Workbench code lives in `workbench/` and represents a hypothetical consuming
+application. It is never shipped to package consumers — only `src/` is.
+
 ## Requirements
 
 If the project maintainer has any additional requirements, you will find them listed here.

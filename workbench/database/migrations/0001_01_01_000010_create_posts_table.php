@@ -14,6 +14,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content')->nullable();
+            $table->string('category')->nullable();
             $table->boolean('is_published')->default(true);
             $table->timestamps();
         });

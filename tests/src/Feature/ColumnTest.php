@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use Awcodes\BadgeableColumn\Tests\Fixtures\Livewire\PostsTable;
-use Awcodes\BadgeableColumn\Tests\Fixtures\Models\Post;
 use Awcodes\BadgeableColumn\Tests\TestCase;
+use Workbench\App\Models\Post;
 
 use function Pest\Livewire\livewire;
 

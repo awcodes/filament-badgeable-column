@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\BadgeableColumn\Tests\Database\Factories;
+namespace Workbench\Database\Factories;
 
-use Awcodes\BadgeableColumn\Tests\Fixtures\Models\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Workbench\App\Models\Post;
 
+/**
+ * @extends Factory<Post>
+ */
 class PostFactory extends Factory
 {
     protected $model = Post::class;
@@ -16,6 +19,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'content' => $this->faker->paragraph(),
+            'category' => $this->faker->randomElement(['Announcements', 'Guides', 'Release Notes']),
             'is_published' => $this->faker->boolean(),
         ];
     }

@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Awcodes\BadgeableColumn\Tests\Fixtures\Models;
+namespace Workbench\App\Models;
 
-use Awcodes\BadgeableColumn\Tests\Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Workbench\Database\Factories\PostFactory;
 
 class Post extends Model
 {
+    /** @use HasFactory<PostFactory> */
     use HasFactory;
 
     protected $casts = [

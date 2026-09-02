@@ -6,7 +6,6 @@ namespace Awcodes\BadgeableColumn\Tests\Fixtures\Livewire;
 
 use Awcodes\BadgeableColumn\Components\Badge;
 use Awcodes\BadgeableColumn\Components\BadgeableColumn;
-use Awcodes\BadgeableColumn\Tests\Fixtures\Models\Post;
 use Exception;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -17,6 +16,7 @@ use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Livewire\Component;
+use Workbench\App\Models\Post;
 
 class PostsTable extends Component implements HasActions, HasSchemas, Tables\Contracts\HasTable
 {
