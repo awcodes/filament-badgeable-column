@@ -1,0 +1,43 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Access to an undefined property Workbench\\App\\Models\\Post\:\:\$category\.$#'
+			identifier: property.notFound
+			count: 2
+			path: workbench/app/Filament/Resources/Posts/Schemas/PostInfolist.php
+
+		-
+			message: '#^Access to an undefined property Workbench\\App\\Models\\Post\:\:\$is_published\.$#'
+			identifier: property.notFound
+			count: 2
+			path: workbench/app/Filament/Resources/Posts/Schemas/PostInfolist.php
+
+		-
+			message: '#^Access to an undefined property Workbench\\App\\Models\\Post\:\:\$category\.$#'
+			identifier: property.notFound
+			count: 2
+			path: workbench/app/Filament/Resources/Posts/Tables/PostsTable.php
+
+		-
+			message: '#^Access to an undefined property Workbench\\App\\Models\\Post\:\:\$is_published\.$#'
+			identifier: property.notFound
+			count: 2
+			path: workbench/app/Filament/Resources/Posts/Tables/PostsTable.php
+
+		-
+			message: '#^PHPDoc type class\-string\<Workbench\\Database\\Factories\\TModel\> of property Workbench\\Database\\Factories\\UserFactory\:\:\$model is not covariant with PHPDoc type class\-string\<Workbench\\App\\Models\\User\> of overridden property Illuminate\\Database\\Eloquent\\Factories\\Factory\<Workbench\\App\\Models\\User\>\:\:\$model\.$#'
+			identifier: property.phpDocType
+			count: 1
+			path: workbench/database/factories/UserFactory.php
+
+		-
+			message: '#^Property Workbench\\Database\\Factories\\UserFactory\:\:\$model \(class\-string\<Workbench\\Database\\Factories\\TModel\>\) does not accept default value of type string\.$#'
+			identifier: property.defaultValue
+			count: 1
+			path: workbench/database/factories/UserFactory.php
+
+		-
+			message: '#^Property Workbench\\Database\\Factories\\UserFactory\:\:\$model has unknown class Workbench\\Database\\Factories\\TModel as its type\.$#'
+			identifier: class.notFound
+			count: 1
+			path: workbench/database/factories/UserFactory.php

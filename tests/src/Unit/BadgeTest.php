@@ -15,7 +15,7 @@ beforeEach(function () {
     $this->component = (new Badge('test'));
 });
 
-it('has correct color', function (string|array|Closure $color) {
+it('has correct color', function (string | array | Closure $color) {
     $this->component->color($color);
 
     expect($this->component)
@@ -27,7 +27,7 @@ it('has correct color', function (string|array|Closure $color) {
     fn () => Color::Slate['500'],
 ]);
 
-it('has correct size', function (string|Closure|Size $size) {
+it('has correct size', function (string | Closure | Size $size) {
     $this->component->size($size);
 
     expect($this->component)
@@ -44,7 +44,7 @@ it('has correct size', function (string|Closure|Size $size) {
     Size::ExtraLarge,
 ]);
 
-it('has correct font family', function (string|Closure|FontFamily $family) {
+it('has correct font family', function (string | Closure | FontFamily $family) {
     $this->component->fontFamily($family);
 
     expect($this->component)
@@ -61,7 +61,7 @@ it('has correct font family', function (string|Closure|FontFamily $family) {
     FontFamily::Mono,
 ]);
 
-it('has correct font weight', function (string|Closure|FontWeight $family) {
+it('has correct font weight', function (string | Closure | FontWeight $family) {
     $this->component->weight($family);
 
     expect($this->component)

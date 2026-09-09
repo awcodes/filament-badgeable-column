@@ -30,11 +30,11 @@ class Badge extends ViewComponent
 
     protected string $view = 'badgeable-column::components.badge';
 
-    protected Column|Entry $column;
+    protected Column | Entry $column;
 
-    protected bool|Closure|null $shouldBePill = true;
+    protected bool | Closure | null $shouldBePill = true;
 
-    protected Size|string|Closure|null $size = null;
+    protected Size | string | Closure | null $size = null;
 
     final public function __construct(string $name)
     {
@@ -49,28 +49,28 @@ class Badge extends ViewComponent
         return $static;
     }
 
-    public function isPill(bool|Closure|null $condition): static
+    public function isPill(bool | Closure | null $condition): static
     {
         $this->shouldBePill = $condition;
 
         return $this;
     }
 
-    public function size(Size|string|Closure|null $size): static
+    public function size(Size | string | Closure | null $size): static
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function column(Column|Entry $column): static
+    public function column(Column | Entry $column): static
     {
         $this->column = $column;
 
         return $this;
     }
 
-    public function getSize(): Size|string|null
+    public function getSize(): Size | string | null
     {
         $size = $this->evaluate($this->size);
 
