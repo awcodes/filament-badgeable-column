@@ -11,20 +11,20 @@ use Illuminate\Support\Str;
 
 trait HasBadges
 {
-    protected array|Closure $prefixBadges = [];
+    protected array | Closure $prefixBadges = [];
 
-    protected array|Closure $suffixBadges = [];
+    protected array | Closure $suffixBadges = [];
 
-    protected bool|Closure $asPills = false;
+    protected bool | Closure $asPills = false;
 
-    public function asPills(bool|Closure $condition = true): static
+    public function asPills(bool | Closure $condition = true): static
     {
         $this->asPills = $condition;
 
         return $this;
     }
 
-    public function getBadges(array|Closure $badges): string
+    public function getBadges(array | Closure $badges): string
     {
         $badges = $this->evaluate($badges);
         $badgesHtml = '';
@@ -47,12 +47,12 @@ trait HasBadges
         return $badgesHtml;
     }
 
-    public function getPrefix(): string|Htmlable|null
+    public function getPrefix(): string | Htmlable | null
     {
         $badges = $this->getPrefixBadges();
 
         if ($badges) {
-            return new HtmlString('<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">'.$badges.'</span><span style="opacity: 0.375;">'.$this->getSeparator().'</span> '.parent::getPrefix());
+            return new HtmlString('<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeparator() . '</span> ' . parent::getPrefix());
         }
 
         return parent::getPrefix();
@@ -63,12 +63,12 @@ trait HasBadges
         return $this->getBadges($this->prefixBadges);
     }
 
-    public function getSuffix(): string|Htmlable|null
+    public function getSuffix(): string | Htmlable | null
     {
         $badges = $this->getSuffixBadges();
 
         if ($badges) {
-            return new HtmlString(parent::getSuffix().' <span style="opacity: 0.375;">'.$this->getSeparator().'</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">'.$badges.'</span>');
+            return new HtmlString(parent::getSuffix() . ' <span style="opacity: 0.375;">' . $this->getSeparator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;">' . $badges . '</span>');
         }
 
         return parent::getSuffix();
@@ -79,7 +79,7 @@ trait HasBadges
         return $this->getBadges($this->suffixBadges);
     }
 
-    public function prefixBadges(array|Closure $badges): static
+    public function prefixBadges(array | Closure $badges): static
     {
         $this->prefixBadges = $badges;
 
@@ -91,7 +91,7 @@ trait HasBadges
         return (bool) $this->evaluate($this->asPills);
     }
 
-    public function suffixBadges(array|Closure $badges): static
+    public function suffixBadges(array | Closure $badges): static
     {
         $this->suffixBadges = $badges;
 
