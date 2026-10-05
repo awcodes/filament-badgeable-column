@@ -36,6 +36,9 @@ return $table
     ]);
 ```
 
+![A Filament posts table whose Title column shows a grey category badge before each title and a green Published or amber Draft badge after it](assets/table-light.png#gh-light-mode-only)
+![A Filament posts table whose Title column shows a grey category badge before each title and a green Published or amber Draft badge after it](assets/table-dark.png#gh-dark-mode-only)
+
 `BadgeableColumn` extends Filament's `TextColumn`, so every method you would normally reach for still works alongside the badges:
 
 ```php
@@ -66,6 +69,9 @@ return $schema
             ]),
     ]);
 ```
+
+![An infolist Title entry with an Announcements badge before the post title and a green Published badge after it](assets/entry-light.png#gh-light-mode-only)
+![An infolist Title entry with an Announcements badge before the post title and a green Published badge after it](assets/entry-dark.png#gh-dark-mode-only)
 
 Both components take the same badge methods, so everything on this page and in [Styling](styling.md) applies equally to either one.
 

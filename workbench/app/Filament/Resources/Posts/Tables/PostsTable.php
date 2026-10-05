@@ -19,6 +19,7 @@ class PostsTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->extraAttributes(['data-focus' => 'posts-table'])
             ->columns([
                 BadgeableColumn::make('title')
                     ->searchable()
@@ -35,6 +36,8 @@ class PostsTable
                     ]),
                 TextColumn::make('content')
                     ->words(10)
+                    // Wrapping lets the title column take its natural width, so its badges are never clipped.
+                    ->wrap()
                     ->toggleable(),
                 TextColumn::make('created_at')
                     ->dateTime()

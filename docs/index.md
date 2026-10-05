@@ -7,6 +7,9 @@ description: Display additional context as badges alongside a Filament table col
 
 Badgeable Column adds badges to either side of a Filament text value. A product name can carry its stock status, a post title can carry its topics, an order reference can carry a "rush" flag — without giving each one a column of its own.
 
+![A Filament posts table whose Title column shows a grey category badge before each title and a green Published or amber Draft badge after it](assets/table-light.png#gh-light-mode-only)
+![A Filament posts table whose Title column shows a grey category badge before each title and a green Published or amber Draft badge after it](assets/table-dark.png#gh-dark-mode-only)
+
 ```php
 use Awcodes\BadgeableColumn\Components\Badge;
 use Awcodes\BadgeableColumn\Components\BadgeableColumn;
