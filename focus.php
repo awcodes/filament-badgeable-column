@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Awcodes\Focus\Card;
 use Awcodes\Focus\Enums\Size;
-use Awcodes\Focus\Enums\Theme;
 use Awcodes\Focus\Screenshot;
 use Awcodes\Focus\ScreenshotSuite;
 
@@ -29,27 +28,26 @@ return ScreenshotSuite::make()
             ->focus('[data-focus="title-entry"]')
             ->minSize(720, 120),
 
-        // The share-image source, shaped to the card templates' screenshot slot. Cards render dark.
+        // The share-image source, shaped to the card templates' screenshot slots. The two-up templates show it
+        // dark in slot 1 and light in slot 2, so it is captured in both themes.
         Screenshot::make('card-table')
             ->viewportSize(...$cardTable)
             ->visit('/admin/posts')
-            ->viewport()
-            ->themes([Theme::Dark]),
+            ->viewport(),
     ])
     ->cardTemplates('https://github.com/awcodes/focus-templates/tree/v1.1.0/dist')
     ->cards([
         // Open Graph and the GitHub social preview share one 2400x1260 template; GitHub crops 30px top and bottom.
         Card::make('social')
-            ->template('one-up-wide')
+            ->template('two-up-wide')
             ->title('Badgeable Column')
-            ->screenshots(['card-table'])
+            ->screenshots(['card-table', 'card-table'])
             ->sizes([Size::OpenGraph, Size::GitHubSocial]),
 
-        // The Filament plugin directory's 2560x1440 thumbnail. One-up, like the social card: in the two-up template
-        // the second slot sits behind the first, which hid the entry's suffix badge.
+        // The Filament plugin directory's 2560x1440 thumbnail.
         Card::make('thumbnail')
-            ->template('one-up')
+            ->template('two-up')
             ->title('Badgeable Column')
-            ->screenshots(['card-table'])
+            ->screenshots(['card-table', 'card-table'])
             ->sizes([Size::Filament]),
     ]);
