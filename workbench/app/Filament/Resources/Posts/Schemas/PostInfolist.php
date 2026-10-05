@@ -17,6 +17,7 @@ class PostInfolist
         return $schema
             ->components([
                 BadgeableEntry::make('title')
+                    ->extraEntryWrapperAttributes(['data-focus' => 'title-entry'])
                     ->prefixBadges([
                         Badge::make('category')
                             ->label(fn (Post $record): ?string => $record->category)
