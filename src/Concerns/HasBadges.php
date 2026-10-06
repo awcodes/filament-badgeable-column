@@ -6,6 +6,7 @@ namespace Awcodes\BadgeableColumn\Concerns;
 
 use Closure;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 
@@ -47,15 +48,15 @@ trait HasBadges
         return $badgesHtml;
     }
 
-    public function getPrefix(): string | Htmlable | null
+    public function getPrefix(mixed $state = null, ?Model $relatedRecord = null): string | Htmlable | null
     {
         $badges = $this->getPrefixBadges();
 
         if ($badges) {
-            return new HtmlString('<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;min-width:max-content;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeparator() . '</span> ' . parent::getPrefix());
+            return new HtmlString('<span style="display:inline-flex;gap:0.375rem;margin-inline-end:0.25rem;min-width:max-content;">' . $badges . '</span><span style="opacity: 0.375;">' . $this->getSeparator() . '</span> ' . parent::getPrefix(...func_get_args()));
         }
 
-        return parent::getPrefix();
+        return parent::getPrefix(...func_get_args());
     }
 
     public function getPrefixBadges(): string
@@ -63,15 +64,15 @@ trait HasBadges
         return $this->getBadges($this->prefixBadges);
     }
 
-    public function getSuffix(): string | Htmlable | null
+    public function getSuffix(mixed $state = null, ?Model $relatedRecord = null): string | Htmlable | null
     {
         $badges = $this->getSuffixBadges();
 
         if ($badges) {
-            return new HtmlString(parent::getSuffix() . ' <span style="opacity: 0.375;">' . $this->getSeparator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;min-width:max-content;">' . $badges . '</span>');
+            return new HtmlString(parent::getSuffix(...func_get_args()) . ' <span style="opacity: 0.375;">' . $this->getSeparator() . '</span><span style="display:inline-flex;gap:0.375rem;margin-inline-start:0.25rem;min-width:max-content;">' . $badges . '</span>');
         }
 
-        return parent::getSuffix();
+        return parent::getSuffix(...func_get_args());
     }
 
     public function getSuffixBadges(): string

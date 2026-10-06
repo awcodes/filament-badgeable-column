@@ -26,3 +26,12 @@ it('keeps badge groups from shrinking below their content width', function () {
         ->assertSeeHtml('margin-inline-end:0.25rem;min-width:max-content;')
         ->assertSeeHtml('margin-inline-start:0.25rem;min-width:max-content;');
 });
+
+it('renders the column prefix and suffix alongside badges', function () {
+    $post = Post::factory()->create();
+
+    livewire(PostsTable::class)
+        ->assertSee('Post:')
+        ->assertSee('(' . mb_strlen($post->title) . ' chars)')
+        ->assertSee('badgeable-column-badge');
+});
