@@ -36,7 +36,7 @@ class PostsTable
                     ]),
                 TextColumn::make('content')
                     ->words(10)
-                    // Wrapping lets the title column take its natural width, so its badges are never clipped.
+                    // Wrapping keeps the table inside the screenshot width, so it doesn't scroll horizontally.
                     ->wrap()
                     ->toggleable(),
                 TextColumn::make('created_at')
