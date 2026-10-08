@@ -32,6 +32,8 @@ class PostsTable extends Component implements HasActions, HasSchemas, Tables\Con
             ->columns([
                 BadgeableColumn::make('title')
                     ->searchable()
+                    ->prefix('Post:')
+                    ->suffix(fn (Post $record): string => '('.mb_strlen($record->title).' chars)')
                     ->prefixBadges([
                         Badge::make('featured')
                             ->color('primary'),
