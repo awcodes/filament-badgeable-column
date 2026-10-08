@@ -17,3 +17,12 @@ it('can render column', function () {
         ->assertCanRenderTableColumn('title')
         ->assertSee('badgeable-column-badge');
 });
+
+it('renders the column prefix and suffix alongside badges', function () {
+    $post = Post::factory()->create();
+
+    livewire(PostsTable::class)
+        ->assertSee('Post:')
+        ->assertSee('('.mb_strlen($post->title).' chars)')
+        ->assertSee('badgeable-column-badge');
+});
