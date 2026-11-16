@@ -27,6 +27,9 @@ on:
       # bundle without touching resources/.
       - "bin/**"
       - ".github/workflows/**"
+      # The ruleset requires `All Checks`, so a change that runs no CI cannot
+      # merge without an admin override. A Dependabot config change is one.
+      - ".github/dependabot.yml"
   pull_request:
     branches: [4.x]
     paths:
@@ -53,6 +56,9 @@ on:
       # bundle without touching resources/.
       - "bin/**"
       - ".github/workflows/**"
+      # The ruleset requires `All Checks`, so a change that runs no CI cannot
+      # merge without an admin override. A Dependabot config change is one.
+      - ".github/dependabot.yml"
 
 jobs:
   ci:
